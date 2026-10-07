@@ -4,823 +4,1373 @@ tags: Talk
 slideOptions:
   transition: fade
   theme: white
+  width: 1280
+  height: 720
+  margin: 0.04
+  center: false
+  minScale: 0.2
+  maxScale: 2
 ---
 
+<!-- Layout für HackMD / reveal.js: feste 16:9-Fläche; Skalierung übernimmt reveal.js. -->
+<style>
+.reveal .slides {
+  font-size: 30px;
+  line-height: 1.3;
+  text-align: left;
+}
+.reveal .slides h1,
+.reveal .slides h2,
+.reveal .slides h3 {
+  text-transform: none;
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+.reveal .slides h1 { font-size: 48px; }
+.reveal .slides h2 { font-size: 42px; }
+.reveal .slides h3 { font-size: 34px; }
+.reveal .slides p { margin: 14px 0; }
+.reveal .slides ul,
+.reveal .slides ol {
+  display: block;
+  margin: 14px 0 14px 1.2em;
+}
+.reveal .slides li { margin: 8px 0; }
+.reveal .slides pre {
+  width: 100%;
+  margin: 18px 0;
+  font-size: 26px;
+  line-height: 1.25;
+  box-shadow: none;
+}
+.reveal .slides pre code {
+  max-height: none;
+  padding: 12px 16px;
+  line-height: inherit;
+}
+.reveal .slides :not(pre) > code { font-size: 0.9em; }
+.reveal .slides table {
+  width: 100%;
+  margin: 18px 0;
+  font-size: 24px;
+  line-height: 1.25;
+}
+.reveal .slides th,
+.reveal .slides td { padding: 7px 12px; }
+.reveal .slides img {
+  max-height: 320px;
+  border: none;
+  box-shadow: none;
+}
+</style>
+
 ## Informationstechnologie I (T4SST1005)
+
+### Termin 1: Einführung in die C#-Programmierung
 
 Sebastian Schwendemann, David Waidner
 
 Note:
-Erklärung der Folie: Kurzvorstellung der Lehrenden und des Kurses. Worum geht es organisatorisch?
-- Zielpublikum: Studierende mit sehr unterschiedlichem Vorwissen.
-- Erwartete Voraussetzungen: Neugier, Grundkenntnisse im Umgang mit Computern (Dateien, Editor).
-- Lernziele des Kurses kurz anreißen: Praxisnahe Programmierübungen, Verständnis grundlegender Konzepte.
-- Tipp: Kurze Hinweise zur Interaktion (Fragen, Pausen, Übungen).
+- Kurz vorstellen und Vorwissen abfragen: Wer hat schon programmiert? Wer noch nie?
+- Keine Programmiererfahrung voraussetzen. Begriffe gemeinsam aufbauen.
+- Fragen sind jederzeit willkommen. Heute zählt das Verstehen kleiner Programme.
+- Präsentation bei 100 % Browserzoom öffnen, möglichst im Vollbild. Bei Änderungen von Zoom oder Fenstergröße die Slide-Ansicht neu laden. slideOptions und der CSS-Block am Dateianfang gehören beim Übertragen nach HackMD dazu.
 
 ---
 
-## Willkommen zur Vorlesung
+## Organisatorisches
 
-**Motivation – Das „Big Picture“:**
-- Programmieren ist eine Schlüsselkompetenz, die immer häufiger wird
-- Einsatzgebiete: Spieleentwicklung, Webanwendungen, Datenanalyse, Maschinensteuerung, Automatisierung
+- Zwei Dozenten in abwechselnden Vorlesungen
+- Eine schriftliche Klausur am Ende
+- Gemeinsame Übungen in der Vorlesung
+- Weitere Aufgaben zum Üben zwischen den Terminen
 
 Note:
-Zusätzliche Details:
-- Warum Programmieren wichtig ist: Automatisierung wiederkehrender Aufgaben, Problemlösung durch Algorithmen.
-- Beispiele konkretisieren: Welches Fachgebiet nutzt welche Technologien (z. B. Datenanalyse → Python, Spiele → C#/Unity).
-- Wichtige Lernhaltung: Fehler sind normal; Debugging ist Teil des Lernprozesses.
-
----
-
-## Organisatoriches
-
-- 2 Dozenten in abwechselnden Vorlesungen
-- Eine schriftliche Klausur am Ende
-- Übungen in Vorlesung + Optionale Übungen zwischen den Vorlesungen
+- Organisatorische Fragen zu Beginn klären.
+- KI-Werkzeuge können zuhause beim Erklären helfen. Erst selbst überlegen, dann Unterstützung nutzen und das Ergebnis selbst erklären können. In der Prüfung stehen diese Werkzeuge nicht zur Verfügung.
+- Laptop / Tablet mit Tastatur stark zu empfehlen. Falls beides nicht vorhanden gerne mit Sitznachbar arbeiten.
 
 ---
 
 ## Lernziele
 
-Am Ende der heutigen Sitzung können Sie:
-- Ein erstes C#-Programm schreiben und ausführen
-- Verstehen, was eine Variable ist und diese verwenden
-- Mit if-else Bedingungen Entscheidungen im Programm modellieren
-- Grundlegende Datentypen in C# unterscheiden und nutzen
+- Ein kleines C#-Programm starten und verändern
+- Variablen mit **Name, Typ und Wert** erklären
+- Code mit Zuweisungen und Berechnungen lesen und schreiben
+- Eingaben verarbeiten und Ergebnisse ausgeben
+- Mit `if` und `else` entscheiden und Bedingungen verknüpfen
 
 Note:
-Erweiterte Hinweise zu den Lernzielen:
-- Konkrete Erwartungen: Sie sollen ein kleines Programm selbst starten und ändern können.
-- Bewertung: Übungsaufgaben dienen dem Verständnis, nicht der Perfektion.
+- Der Schwerpunkt liegt auf Variablen und dem Lesen von Code.
+- Erst vorhersagen, dann ausführen, dann erklären: Dieses Muster heute immer wieder verwenden.
+- Der optionale Teil am Ende ist Material für verbleibende Zeit oder spätere Vertiefung.
 
 ---
 
-## Was ist (prozedurales) Programmieren?
+## Von der Aufgabe zum Programm
 
-- Schritt-für-Schritt-Anweisungen an den Computer
-- Programme bestehen aus Daten + Anweisungen
-- **Prozedural** = Befehle werden nacheinander ausgeführt
+Ein Programm führt konkrete Anweisungen aus, etwa für Berechnungen oder zur Automatisierung.
+
+**Beispiel: Alter in Tagen berechnen**
+
+1. Alter in Jahren entgegennehmen
+2. Mit 365 multiplizieren
+3. Ergebnis in Tagen anzeigen
+
+**Eingabe → Verarbeitung → Ausgabe**
+
+Eine genaue Schrittfolge zur Lösung einer Aufgabe heißt **Algorithmus**.
 
 Note:
-Vertiefung:
-- Kontrast zu anderen Paradigmen: kurz erwähnen objektorientiert und funktional (nur zum Einordnen).
-- Typische Struktur prozeduraler Programme: Eingabe → Verarbeitung → Ausgabe.
-- Einfache Beispielidee: Rezept als Analogie (Zutaten = Daten, Schritte = Anweisungen).
+- Ein alltagsnahes Beispiel sammeln lassen, etwa wiederkehrende Rechnungen.
+- Der Computer errät unsere Absicht nicht. Wir müssen Daten und Schritte genau beschreiben.
+- Die Schritte sind eine Beschreibung in Alltagssprache, noch kein C#.
+- Gemeinsam für 20 Jahre durchspielen: 20 × 365 = 7300.
+- Die Rechnung ist eine Näherung: Schaltjahre und das genaue Geburtsdatum bleiben hier unberücksichtigt.
 
 ---
 
-## Was ist ein Algorithmus?
+## Erstes C#-Programm
 
-- Definition: Eine eindeutige Abfolge von Schritten zur Lösung eines Problems
-- Eigenschaften: endlich, eindeutig, effektiv
-
-Note:
-Mehr Details:
-- "Eindeutig": Jeder Schritt muss klar ausführbar sein — keine Mehrdeutigkeit.
-- "Effektiv": Schritte müssen tatsächlich ausführbar sein (realisierbare Operationen).
-- Beispiel: Sortierverfahren (kurze Erwähnung Bubble/Insertion als Einstieg).
-- Hinweis: Algorithmen werden später in Pseudocode oder Code umgesetzt.
-
----
-
-## Darstellungsmethoden
-
-**Pseudocode:**
-```
-Lies Zahl ein
-Wenn Zahl % 2 == 0 dann
-    Ausgabe „Gerade“
-Sonst
-    Ausgabe „Ungerade“
-Ende
+```csharp
+Console.WriteLine("Hallo!");
+Console.WriteLine("Programmierung mit C#.");
 ```
 
-Note:
-Erläuterung der Darstellung:
-- Zweck von Pseudocode: Konzepte beschreiben ohne Syntaxdetails einer Programmiersprache.
-- Strukturieren mit Einrückung zeigt Kontrollfluss (wie in echtem Code).
-- Beim Übertragen in Code: Bedingung (% 2 == 0) → in C#: if (zahl % 2 == 0) { ... }.
-- Tipp: Pseudocode sollte so präzise wie möglich sein, um Implementierungsfehler zu vermeiden.
+Ausgabe:
 
----
-
-## Flowchart
-
-![Flow_Diagram](https://github.com/Rearth/DHBW-Vorlesung-Codespace/blob/main/Material/Bilder/algo_diagram.png?raw=true)
-
-Note:
-Details zur Interpretation:
-- Start/Ende (runde Felder) markieren Programmbeginn und -ende.
-- Parallelogramme für I/O (z. B. Eingabe lesen, Ausgabe schreiben).
-- Rauten für Entscheidungen → Pfade basierend auf true/false.
-- Nutzen: Komplexe Abläufe visualisieren, bevor man Code schreibt.
-- Umsetzung in Code: Verzweigungen → if/else, Schleifen → Schleifenstrukturen.
-
----
-
-## Programmieren in der Praxis
-
-- Es gibt viele Programmiersprachen (Python, Java, C, C#, …)
-- Wir nutzen **C#**, weil:
-  - Modern, gut geeignet für Einsteiger
-  - Breites Einsatzgebiet: Desktop, Web, Spiele, Enterprise
-  - Gute Integration mit Tools und Frameworks
-
-Note:
-Praktische Hinweise:
-- Warum C#: gute Balance aus einfacher Syntax und starker Typisierung; viele Lernressourcen.
-- Werkzeuge: IDE (z. B. Visual Studio / Codespaces) erleichtern Debugging, Autovervollständigung.
-- Tipp: Fokus auf Konzepte — sie lassen sich später auf andere Sprachen übertragen.
-
----
-
-## Erstes „Hello World“ Programm
-
-```c#
-Console.WriteLine("Hello, World!");
+```text
+Hallo!
+Programmierung mit C#.
 ```
 
-Note:
-Zusätzliche Informationen:
-- Was passiert beim Ausführen: Text wird auf der Konsole ausgegeben; Programm endet.
-- Wo ausführen: In Program.cs, in einem kleinen Konsolenprojekt oder mittels Top-Level-Statements.
-- Fehlerquellen: Vergessene Anführungszeichen oder Semikolon führen zu Compile-Fehlern.
-- Lernziel dieser Folie: Verständnis für Aufruf einer Methode und Ausgabe auf der Konsole.
-
-----
-
-## Erklärung „Hello World“
-
-- `Console.WriteLine` = Funktionsaufruf
-- `("Hello, World!")` = Übergabe eines Strings
-- `;` am Ende jeder Anweisung
+Anweisungen werden hier **von oben nach unten** ausgeführt.
 
 Note:
-Vertiefende Punkte:
-- Console ist eine Klasse in System-Namespace; WriteLine ist eine Methode.
-- Unterschied Write/WriteLine: WriteLine fügt newline hinzu.
-- Methodenaufruf-Syntax: Name(Argumente); mehrere Argumente möglich.
-- Compiler-Hinweise: Compiler-Fehler geben meist Zeilennummer und Fehlertyp an — lesen!
+- Code und Ausgabe klar unterscheiden: Quelltext schreiben wir, die Ausgabe erzeugt das Programm.
+- Zeilen einzeln zeigen und die erwartete Ausgabe abfragen.
+- C# ist die Programmiersprache. Die Konsole ist der Bereich für Textausgaben und Texteingaben.
 
-----
+---
 
-## „Hello World“ – Klassische Form
+## Aufbau einer Anweisung
 
-```c#
-using System;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Hello, World!");
-    }
-}
+```csharp
+Console.WriteLine("Hallo!");
 ```
 
+| Bestandteil | Bedeutung |
+|---|---|
+| `Console.WriteLine` | Text oder einen Wert mit Zeilenumbruch ausgeben |
+| `(...)` | Enthält den auszugebenden Text oder Wert |
+| `"Hallo!"` | Ein Textwert; die Anführungszeichen begrenzen den Text |
+| `;` | Beendet die Anweisung |
+
 Note:
-Erklärungen der Bestandteile:
-- using System; bindet Namensraum, damit Console ohne Qualifizierung nutzbar ist.
-- class Program: Container für Methoden; Einstiegspunkt ist die Main-Methode.
-- static void Main(string[] args): Signatur des Programms; args enthält Kommandozeilenargumente.
-- Top-Level-Statements: In modernen C#-Versionen kann Main weggelassen werden — Sinn: weniger Boilerplate für Einsteiger.
-- Praxishinweis: Beim Debuggen ist es hilfreich, Breakpoints in Main zu setzen.
+- WriteLine ist eine Methode, die wir aufrufen. Ihre innere Umsetzung müssen wir noch nicht kennen.
+- Klammern und Anführungszeichen sind unterschiedliche Zeichen mit unterschiedlichen Aufgaben.
+- Die Anführungszeichen und das Semikolon erscheinen nicht in der Ausgabe.
+- Nicht behaupten, jede C#-Zeile brauche ein Semikolon: Später kommen Blöcke mit geschweiften Klammern.
 
 ---
 
-## Erste Praxis: IDE Setup mit GitHub Codespaces
+## Praxis: Arbeitsumgebung
 
-Template-Link: [https://github.com/Rearth/DHBW-Vorlesung-Codespace](https://github.com/Rearth/DHBW-Vorlesung-Codespace)
-![qrcode](https://github.com/Rearth/DHBW-Vorlesung-Codespace/blob/main/Material/Bilder/codespace_qr.png?raw=true)
+[GitHub-Vorlage öffnen](https://github.com/Rearth/DHBW-Vorlesung-Codespace)
 
-Note:
-Praktische Details:
-- Codespace enthält vorkonfiguriertes Projekt, damit alle dieselbe Umgebung nutzen.
-- Voraussetzungen: GitHub-Account, kann gratis erstellt werden.
+![QR-Code zur GitHub-Vorlage](https://github.com/Rearth/DHBW-Vorlesung-Codespace/blob/main/Material/Termin_1_Intro/Bilder/codespace_qr.png?raw=true)
 
-----
-
-## Erste Praxis: IDE Setup mit GitHub Codespaces
-
-- Codespace öffnen
-- `Program.cs` auswählen
-- Grünen Knopf → „Run“ klicken
+Codespace starten und den Editor öffnen.
 
 Note:
-Konkrete Schritte und Hinweise:
-- Nach Start: ggf. Build-Prozess im Terminal beobachten.
-- Wenn Ausgabe nicht erscheint: sicherstellen, dass die richtige Konfiguration (Debug/Release) und das richtige Projekt ausgewählt ist.
-- Änderungen live testen: Datei speichern, Wiederholen des Runs.
-- Co-Pilot chat verfügbar, kann optional benutzt werden. Idealerweise bei Eigenarbeit zuhause zum erklären und helfen bei problemen. KI-Tools sollten nicht zum lösen der kompletten Aufgaben genutzt werden. In der Prüfung sind diese nicht verfügbar.
+- GitHub-Account und Start des Codespaces gemeinsam durchgehen, Ladezeit einplanen.
+- Editor, Dateiliste, Run-Button und Ausgabebereich zeigen. Die Studierenden führen keine Terminalbefehle aus.
+- Der Codespace enthält das .NET SDK zum Übersetzen und Ausführen von C#.
+- Kurze Demo: Ausführen, Ausgabe lesen und Position von Fehlermeldungen zeigen.
 
-----
+---
 
-## Codespaces: Erste Änderungen
+## Praxis: Vorbereitetes Projekt ausführen
 
-- Ändern Sie die Ausgabe, z. B.:
-```c#
-Console.WriteLine("Mein erstes C#-Programm!");
+Das Template enthält bereits ein C#-Projekt.
+
+1. Die vorbereitete C#-Datei öffnen.
+2. Den Beispielcode bearbeiten und speichern.
+3. Über den **Run-Button ▶** in VS Code starten.
+4. Die Ausgabe im angezeigten Ausgabebereich prüfen.
+
+Verwenden Sie das vorhandene Projekt. Ersetzen Sie für ein neues Beispiel den bisherigen Übungscode in der Datei.
+
+Note:
+- Die konkrete Datei des Templates gemeinsam zeigen; im aktuellen Arbeitsstand heißt sie Termin_1.cs.
+- Vorher sicherstellen, dass das Template den einfachen Einstiegscode enthält und nicht die Lösungen späterer Termine.
+- Run-Button und Eingabebereich einmal live zeigen. Bei ReadLine muss die gewählte Run-Konfiguration interaktive Eingaben erlauben.
+- Kein neues Projekt anlegen, keine CLI-Befehle durch die Studierenden ausführen lassen.
+- Beispiele jeweils als vollständigen Dateiinhalt einsetzen, statt alle Beispiele untereinander anzuhängen.
+
+---
+
+## Aufgabe 1: Programm starten und verändern
+
+**Ziel:** Das vorbereitete Projekt bearbeiten und ausführen.
+
+**Anforderungen:**
+
+1. Öffnen Sie die vorbereitete C#-Datei im Codespace und starten Sie sie über **▶ Run**.
+2. Ändern Sie einen ausgegebenen Text und ergänzen Sie eine weitere Textausgabe.
+3. Speichern und starten Sie erneut. Prüfen Sie Inhalt und Reihenfolge der Ausgaben.
+
+**Tipps:** Eine Ausgabe lautet z. B. `Console.WriteLine("Hallo!");`. Achten Sie auf `"..."`, `(...)` und `;`.
+
+Note:
+- Übungsblock 1, etwa 3–5 Minuten. Bearbeiten, speichern, starten und Ausgabe zuordnen. Danach einen fehlenden Strichpunkt gemeinsam korrigieren.
+
+---
+
+## Zweck von Variablen
+
+```csharp
+Console.WriteLine(20);
+Console.WriteLine(20 * 365);
 ```
-- Programm starten und Unterschied beobachten
+
+Die Zahl `20` steht hier für ein Alter. Bei einer Änderung müssen beide Vorkommen angepasst werden.
+
+Eine Variable speichert einen Wert unter einem **Namen**, über den er wiederverwendet werden kann.
 
 Note:
-Zusätzliche Hinweise:
-- Ziel: Kleine Änderungen vornehmen, kompilieren und das Ergebnis prüfen.
-- Tipp: Klein anfangen — eine Zeile ändern reicht zum Vertraut werden mit Editieren/Run.
+- Problem zuerst besprechen: Die Bedeutung der Zahl steht nicht im Code, und sie ist doppelt eingetragen.
+- Variablen ermöglichen, Werte einmal bereitzustellen und in mehreren Anweisungen zu verwenden.
+- Die nächste Folie ersetzt beide Vorkommen durch einen Namen.
 
 ---
 
-## Variablen
+## Variablen: Typ, Name und Wert
 
-- Speicher für Daten im Programm
-- Zuweisung mit `=`
-- Schlüsselwort `var` für automatische Typableitung
-
-Note:
-Wichtige Zusatzinfos:
-- Lebensdauer: Variable existiert nur im Gültigkeitsbereich (Scope), z. B. innerhalb einer Methode oder eines Blocks.
-- Initialisierung: Eine Variable sollte vor Verwendung initialisiert werden.
-- var ≠ dynamisch: var ist statisch typisiert; der Typ wird zur Compilezeit bestimmt.
-
-----
-
-## Beispiel: Variablen nutzen
-
-```c#
-var zahl1 = 5;
-var zahl2 = 7;
-var summe = zahl1 + zahl2;
-Console.WriteLine($"Summe: {summe}");
+```csharp
+int alter = 20;
+Console.WriteLine(alter);
 ```
 
+| Bestandteil | Bedeutung |
+|---|---|
+| `int` | Datentyp: eine ganze Zahl |
+| `alter` | Name des Speicherplatzes |
+| `=` | Wert zuweisen |
+| `20` | Startwert |
+| `;` | Ende der Anweisung |
+
+**Deklarieren:** Variable anlegen. **Initialisieren:** ersten Wert zuweisen.
+
 Note:
-Erläuterungen:
-- Typinferenz: zahl1/zahl2 sind ints; summe ist int.
-- String-Interpolation ($"..."): Variablen direkt einfügen; gute Lesbarkeit.
-- Fehlerfälle: Bei gemischten Typen (z. B. int + double) wird Typkonversion angewandt — bewusst sein, wenn Genauigkeit wichtig ist.
+- Bild eines beschrifteten Speicherfachs verwenden: Name auf dem Fach, aktueller Wert darin, Typ legt erlaubte Werte fest.
+- Dies ist ein vereinfachtes Modell für die heute verwendeten lokalen Variablen. Keine Speicheradressen, Stack/Heap oder Referenzsemantik einführen.
+- int steht für ganze Zahlen, etwa 0, 20 oder -3.
+- Die Variable selbst wird nicht ausgegeben; WriteLine liest ihren aktuellen Wert.
+- Diese Anweisung verbindet Deklaration und Initialisierung.
+- Grundform mündlich wiederholen: Typ Name gleich Wert Semikolon.
+- Wir geben Variablen heute direkt beim Anlegen einen Startwert.
 
 ---
 
-## Primitive Datentypen in C#
+## Variablenwerte und Literale
 
-- `int` – Ganzzahlen
-- `float` – Kommazahlen
-- `bool` – Wahr/Falsch
-- `string` – Zeichenketten
+```csharp
+int alter = 20;
+
+Console.WriteLine(alter);
+Console.WriteLine("alter");
+Console.WriteLine(20);
+```
+
+Ausgabe:
+
+```text
+20
+alter
+20
+```
+
+`alter` liest die Variable. `"alter"` ist ein wörtlicher Text. `20` ist eine Zahl.
 
 Note:
-Zusatzinfos:
-- Genauigkeit: float weniger genau als double;
-- Größenordnung: int für übliche Zählwerte; long für sehr große Werte.
-- bool nur true/false — keine numerische Interpretation wie in manchen Sprachen.
-
-----
-
-## Primitive Datentypen in C# - Ergänzungen
-
-- `short`, `byte`, `long` – Ganzzahlen
-- `double` – Kommazahlen
-- `char` – Zeichen
-
-Note:
-Kurzkommentare:
-- byte in C# ist unsigned (0..255).
-- char repräsentiert ein UTF-16 Codeunit; für einzelne Zeichen geeignet, für Texte string verwenden.
+- Erst vorhersagen lassen. Dies ist eine zentrale Unterscheidung für Anfänger.
+- Ein direkt im Code geschriebener Wert wie 20 oder "alter" heißt Literal.
+- Ohne Anführungszeichen sucht C# hier eine Variable mit diesem Namen.
 
 ---
 
-## Datentypen im Detail
+## Variablen-Demo · Schritt 1/6
 
-| Type | Vorzeichen | Größe | Wertebereich |
-|------|---------|------|-------|
-| byte | ja | 8 bit | 0 to 2^8 - 1 (0...255) |
-| short | ja | 16 bit | -2¹⁵ to 2¹⁵ - 1 (-32768...32767) |
-| int | ja | 32 bit | -2³¹ to 2³¹ - 1 (-2147483648...2147483647) |
-| long | ja | 64 bit | -2⁶³ to 2⁶³ - 1 (-9223372036854775808...9223372036854775807) |
-| char | nein | 16 bit | 16-Bit Unicode Character (0x0000...0xffff (65535₁₀)) |
-| float | ja | 32 bit (V:1 bit, E:8 bit, M:23 bit) | -3.40282347 × 10³⁸ to 3.40282347 × 10³⁸ |
-| double | ja | 64 bit (V:1 bit, E:11 bit, M:52 bit) | -1.79769313486231570 × 10³⁰⁸ to 1.79769313486231570 × 10³⁰⁸ |
-| boolean | - | 8 bit | true/false |
+```csharp [1]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · —
+┌────────────────┐    ┌────────────────┐
+│       10       │    │ nicht angelegt │
+└────────────────┘    └────────────────┘
+```
+
+`punkte` wird als `int` angelegt und erhält den Startwert `10`.
 
 Note:
-Wichtige Klarstellungen:
-- Wertebereiche sind nützlich zur Entscheidung, welcher Typ passt (Speicher vs. Bedarf).
-- Floating-Point: Achtung Rundungsfehler; bei Vergleich von doubles Toleranz verwenden.
+- Die sechs Folien zeigen ein einziges Programm, keine sechs unabhängigen Programme. Die hervorgehobene Zeile ist die gerade ausgeführte Anweisung; der Speicher darunter zeigt den Zustand danach. Vor dem nächsten Folienwechsel den nächsten Zustand vorhersagen lassen.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Variablen-Demo · Schritt 2/6
+
+```csharp [2]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · int
+┌────────────────┐    ┌────────────────┐
+│       10       │    │       10       │
+└────────────────┘    └────────────────┘
+```
+
+Der aktuelle Wert von `punkte` wird in die neue Variable `kopie` übernommen.
+
+Note:
+- Vor dem Wechsel fragen: Welchen Wert bekommt kopie? Bei int wird der aktuelle Wert kopiert. Es entsteht keine dauerhafte Verbindung zwischen den Variablen.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Variablen-Demo · Schritt 3/6
+
+```csharp [3]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · int
+┌────────────────┐    ┌────────────────┐
+│       14       │    │       10       │
+└────────────────┘    └────────────────┘
+```
+
+`punkte` erhält `14`. Der Wert in `kopie` bleibt unverändert.
+
+Note:
+- Vor dem Wechsel fragen: Verändert sich kopie ebenfalls? Nein. Bei der Zuweisung steht kein Typ mehr dabei: Die Variable existiert bereits.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Variablen-Demo · Schritt 4/6
+
+```csharp [4]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · int
+┌────────────────┐    ┌────────────────┐
+│       17       │    │       10       │
+└────────────────┘    └────────────────┘
+```
+
+Rechts lesen und rechnen: `14 + 3 = 17`. Dann `17` in `punkte` speichern.
+
+Note:
+- Vor dem Wechsel die Rechnung abfragen. Das rechte punkte liest den bisherigen Wert 14; erst danach ersetzt die Zuweisung den linken Speicherinhalt durch 17. = ist eine Aktion, keine mathematische Gleichung.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Variablen-Demo · Schritt 5/6
+
+```csharp [5]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · int
+┌────────────────┐    ┌────────────────┐
+│       17       │    │       27       │
+└────────────────┘    └────────────────┘
+```
+
+Rechts beide Werte lesen: `17 + 10 = 27`. Dann `27` in `kopie` speichern.
+
+Note:
+- Vor dem Wechsel beide gelesenen Werte nennen lassen. Der bisherige Wert von kopie geht in die Rechnung ein, bevor er ersetzt wird. Die Variable punkte wird dabei nur gelesen.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Variablen-Demo · Schritt 6/6
+
+```csharp [6]
+int punkte = 10;
+int kopie = punkte;
+punkte = 14;
+punkte = punkte + 3;
+kopie = punkte + kopie;
+Console.WriteLine(kopie);
+```
+
+**Speicher nach der markierten Anweisung:**
+
+```text
+punkte · int          kopie · int
+┌────────────────┐    ┌────────────────┐
+│       17       │    │       27       │
+└────────────────┘    └────────────────┘
+```
+
+Die Ausgabe liest `kopie`: **27**. Beide Speicherwerte bleiben unverändert.
+
+Note:
+- Vor dem Wechsel die Ausgabe vorhersagen lassen. Danach das gesamte Programm im vorbereiteten Projekt über Run ausführen. Ergebnis 27. Optional zurück zur ersten Demo-Folie und mit anderem Startwert gedanklich wiederholen.
+- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+
+---
+
+## Datentypen im Überblick
+
+| Typ | Vorzeichen | Größe | Wertebereich / Inhalt |
+|---|---|---|---|
+| `byte` | Nein | 8 Bit | 0 … 255 |
+| `short` | Ja | 16 Bit | −2¹⁵ … 2¹⁵ − 1 |
+| `int` | Ja | 32 Bit | −2³¹ … 2³¹ − 1 |
+| `long` | Ja | 64 Bit | −2⁶³ … 2⁶³ − 1 |
+| `char` | — | 16 Bit | Eine UTF-16-Codeeinheit, z. B. `'A'` |
+| `float` | Ja | 32 Bit | Bis ca. ±3,4 × 10³⁸; ca. 6–9 gültige Ziffern |
+| `double` | Ja | 64 Bit | Bis ca. ±1,8 × 10³⁰⁸; ca. 15–17 gültige Ziffern |
+| `decimal` | Ja | 128 Bit | Bis ca. ±7,9 × 10²⁸; ca. 28–29 gültige Ziffern |
+| `bool` | — | 8 Bit | `true` oder `false` |
+| `string` | — | Variabel | Text, z. B. `"Inhalt"` |
+
+Note:
+- Die vollständige ursprüngliche Tabelle wieder aufgreifen; string und decimal ergänzen, weil Text bereits verwendet wird und Dezimalwerte eingeordnet werden sollen.
+- Zeilen direkt erklären: byte/short/int/long speichern ganze Zahlen mit unterschiedlichen Grenzen. Vorzeichen bedeutet, dass auch negative Zahlen möglich sind; byte ist vorzeichenlos.
+- 8 Bit sind ein Byte. Mit mehr Bits lassen sich mehr unterschiedliche Werte darstellen. Die Grenzen dienen als Nachschlageinformation, nicht als Auswendiglernziel. int reicht von −2 147 483 648 bis 2 147 483 647.
+- char speichert eine UTF-16-Codeeinheit; ein sichtbares Unicode-Zeichen kann mehr als eine solche Einheit benötigen. Für Texte string verwenden. string hat keine feste Gesamtgröße.
+- float und double sind binäre Gleitkommazahlen: großer Bereich, aber begrenzte Genauigkeit. 6–9 bzw. 15–17 meint signifikante Ziffern, nicht feste Nachkommastellen. Die genannten Grenzen sind Näherungen für endliche Werte.
+- decimal eignet sich für Dezimalrechnungen wie Geldbeträge; auch hier bestehen Grenzen und Rundungsmöglichkeiten. Die Einführung arbeitet überwiegend mit int und double.
+- bool hat nur zwei logische Werte, auch wenn sizeof(bool) ein Byte ergibt. Größen beschreiben Werte, nicht den gesamten Verwaltungsaufwand einer Variable.
+- Weitere Ganzzahlvarianten: sbyte (−128 … 127), ushort (0 … 2¹⁶−1), uint (0 … 2³²−1), ulong (0 … 2⁶⁴−1). Bei den u-Varianten entfällt das Vorzeichen. Nur kurz einordnen.
+- Referenzen: [Ganzzahltypen](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types), [Gleitkomma- und Dezimaltypen](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types), [sizeof](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/sizeof).
 
 ---
 
 ## Datentypen definieren
 
-Ist ein Datentyp nicht eindeutig definiert (z.b. bei Nutzung von `var` oder bei Funktionsaufrufen), werden Daten wie folgt interpretiert:
-- `"Inhalt"` -> String, durch die `"` erkannt.
-- `'a'` -> Char. Das `'` erlaubt nur die Eingabe eines einzelnen Buchstabens
-- `123` -> Int. Eine Zahl ohne Komma (beim Programmieren immer ein `.`) wird als int per default erkannt.
-- `123.45` -> Double.
-- `true` / `false` -> boolean
+Die Schreibweise eines direkt angegebenen Werts (**Literal**) bestimmt seinen Typ — auch ohne eine Variablendeklaration:
+
+- `"Inhalt"` → `string`: Text in doppelten Anführungszeichen
+- `'a'` → `char`: eine UTF-16-Codeeinheit in einfachen Anführungszeichen
+- `123` → `int`: eine ganze Zahl ohne Dezimalpunkt
+- `123.45` → `double`: eine Zahl mit Dezimalpunkt
+- `true` / `false` → `bool`: Wahrheitswerte ohne Anführungszeichen
+
+Im C#-Code ist das Dezimaltrennzeichen immer ein **Punkt**.
 
 Note:
-Hinweise zu Literalen:
-- Dezimaltrennzeichen in C# ist der Punkt; lokale Darstellung der Konsole kann Kommas anzeigen.
-- Literaltypen können mit Suffixen explizit gemacht werden (siehe nächste Folie).
-- Bei großen Ganzzahlen: Numeric separators (1_000_000) machen Zahlen lesbarer.
+- Die Literale einzeln mit der Tabelle verbinden. Ein Typ muss nicht erst durch eine Variablendeklaration entstehen: Auch Console.WriteLine(123) erhält einen int-Wert.
+- Bei var wird der Variablentyp aus dem Startwert abgeleitet. Das Schlüsselwort hier nur einordnen; eine eigene optionale Folie folgt später.
+- Ein explizit deklarierter Zieltyp kann zulässige Umwandlungen erlauben, etwa double wert = 123;. Das int-Literal wird dann in double umgewandelt.
+- Sehr große Ganzzahlliterale können ohne Suffix einen anderen Ganzzahltyp erhalten; für unsere kleinen Werte ist int die Standardwahl.
+- Ein char-Literal enthält genau eine UTF-16-Codeeinheit. Einfache Beispiele wie 'a' verwenden.
+- Die Ausgabe kann abhängig von der Kultur ein Komma verwenden. 1_000_000 ist eine lesbare Schreibweise derselben Zahl wie 1000000.
 
-----
+---
 
 ## Spezifische Datentypen definieren
 
-Soll ein bestimmter Variablentyp im Programmcode genutzt werden, können folgende suffixe genutzt werden:
-- `123L` -> Long
-- `123.45F` -> Float
-- `123.45D` -> Double
+Ein **Suffix** legt den Typ eines Zahlenliterals gezielt fest:
+
+| Literal | Typ | Beispiel einer Deklaration |
+|---|---|---|
+| `123L` | `long` | `long anzahl = 123L;` |
+| `123.45F` | `float` | `float temperatur = 123.45F;` |
+| `123.45D` | `double` | `double laenge = 123.45D;` |
+| `123.45M` | `decimal` | `decimal betrag = 123.45M;` |
+
+Ohne Suffix hat `123.45` bereits den Typ `double`.
 
 Note:
-Erklärung:
-- L/l für long, F/f für float, D/d optional für double.
-- Groß-/Kleinschreibung bei Suffixen ist erlaubt (z. B. 123L oder 123l).
+- L/l, F/f, D/d und M/m sind möglich. Große Buchstaben verwenden; ein kleines l ist leicht mit 1 zu verwechseln.
+- float temperatur = 36.6F; funktioniert, float temperatur = 36.6; nicht: Das Literal ohne Suffix ist ein double und wird nicht automatisch in float umgewandelt.
+- L legt den Literaltyp fest, erweitert aber nicht beliebig den Wertebereich.
+- M für decimal ergänzt die wiederhergestellten Suffixe L/F/D.
 
 ---
 
-## Variablen ausgeben
+## Typbindung und Zuweisungen
 
-Strings können variablen beinhalten, wenn sie mit einem $ prefixed werden.
-
-Beispiel:
-```c#
-var summe = 4 + 5;
-Console.WriteLine($"Summe: {summe}");
+```csharp
+int anzahl = 3;
+anzahl = 4;          // Passt: eine ganze Zahl
 ```
 
+Diese Zuweisungen passen nicht zu `int`:
+
+```csharp
+anzahl = "vier";     // Text statt Zahl
+anzahl = 4.5;        // Zahl mit Nachkommastelle
+```
+
+Der **Compiler** prüft den Code vor der Ausführung und meldet solche Fehler.
+
 Note:
-Zusatzinfos zur Formatierung:
-- String-Interpolation erlaubt auch Format-Spezifizierer: $"{wert:0.00}".
-- Alternative: String.Format oder concatenation (+), aber Interpolation ist lesbarer.
+- Das zweite Codefeld ist absichtlich ungültig und kein zusätzliches vollständiges Programm.
+- Compiler kurz als Übersetzer mit Prüfungen erklären, keine IL/JIT-Details.
+- Einmal einen Typfehler live erzeugen, Fehlermeldung lesen und anschließend korrigieren.
 
 ---
 
-## Beispielprogramm: Datentypen
+## Variablennamen und Kommentare
 
-```c#
-int alter = 21;
-double pi = 3.14159;
-float temperatur = 36.6f;
-char buchstabe = 'A';
-bool istStudent = true;
-string name = "Max";
-
-Console.WriteLine($"Alter: {alter}");
-Console.WriteLine($"Pi: {pi}");
-Console.WriteLine($"Temperatur: {temperatur}");
-Console.WriteLine($"Buchstabe: {buchstabe}");
-Console.WriteLine($"Ist Student: {istStudent}");
-Console.WriteLine($"Name: {name}");
+```csharp
+// Näherung ohne Schaltjahre
+int alterInJahren = 20;
+int alterInTagen = alterInJahren * 365;
 ```
 
+- Aussagekräftige Namen: `alterInJahren` statt `x`
+- Variablennamen üblicherweise in **camelCase**
+- Groß-/Kleinschreibung zählt: `alter` und `Alter` sind verschiedene Namen
+- `//` beginnt einen Kommentar bis zum Zeilenende
+
 Note:
-Punkte zum Besprechen:
-- Ausgabeformat: Bei double/float Rundungsdarstellung beachten; Formatierung nach Bedarf.
-- Typen bewusst wählen: float mit f-Literal markieren.
-- Namen und Konvention: Variablennamen sollten selbsterklärend sein.
+- Keine Leerzeichen in Variablennamen; Schlüsselwörter wie int sind keine erlaubten normalen Variablennamen.
+- Deutsche Namen dienen hier dem Verständnis. In vielen Projekten werden englische Namen verwendet.
+- Kommentare werden nicht ausgeführt. Der Kommentar erklärt hier die bewusste Vereinfachung.
 
 ---
 
-## const und readonly
+## Rechenoperatoren
 
-- `const`: Wert muss zur Compile-Zeit feststehen, ändert sich nie
-- `readonly`: Kann im Konstruktor gesetzt werden, bleibt danach unveränderlich
+| Operator | Bedeutung | Beispiel | Ergebnis |
+|---|---|---|---|
+| `+` | Addition | `10 + 3` | `13` |
+| `-` | Subtraktion | `10 - 3` | `7` |
+| `*` | Multiplikation | `10 * 3` | `30` |
+| `/` | Division | `10 / 3` | `3` |
+| `%` | Rest bei Ganzzahldivision | `10 % 3` | `1` |
+
+Multiplikation und Division werden vor Addition und Subtraktion ausgewertet. Klammern legen die Reihenfolge fest: `(2 + 3) * 4` ergibt `20`.
 
 Note:
-Weitere Erläuterungen:
-- const ist statisch und inlined vom Compiler — bei Änderung in Bibliothek Recompile nötig.
-- readonly erlaubt Laufzeitinitialisierung im Konstruktor, nützlich für abhängige Werte.
-- Verwendung: const für mathematische Konstanten, readonly für konfigurierbare Werte, die nach Konstruktion fest sind.
+- Bei / die nächste Folie direkt anschließen: Das Ergebnis hängt von den Typen der beteiligten Werte ab.
+- % am Beispiel erklären: 10 enthält dreimal die 3; 1 bleibt übrig.
+- Rest später für die Gerade/Ungerade-Aufgabe wieder aufgreifen.
 
 ---
 
-## Operatoren in C#
+## Ganzzahl- und Gleitkommadivision
 
-- **Arithmetisch**: `+`, `-`, `*`, `/`, `%`
-- **Zuweisung**: `=`, `+=`, `-=`, `*=`, `/=`
-- **Vergleich**: `==`, `!=`, `<`, `>`, `<=`, `>=`
-- **Logisch**: `&&`, `||`, `!`
-- **Inkrement/Dekrement**: `++`, `--`
+```csharp
+Console.WriteLine(5 / 2);      // 2
+Console.WriteLine(5.0 / 2);    // 2.5 oder 2,5 in der Ausgabe
+```
+
+- Zwei `int`-Werte: Der Nachkommateil wird abgeschnitten.
+- Mit einem `double`-Wert: Das Ergebnis kann Nachkommastellen haben.
+
+```csharp
+double ergebnis = 5 / 2;      // Speichert 2, nicht 2.5
+```
 
 Note:
-Wichtige Hinweise:
-- Operatorpriorität beachten; bei Unsicherheit Klammern verwenden.
-- Ganzzahlige Division rundet ab (z. B. 5/2 == 2).
-- Kurzschlussverhalten: && und || führen zu bedingter Auswertung — Seiteneffekte beachten.
-
-----
-
-## Operatoren Beispiele - Arithmetisch
-
-
-```c#
-int a = 10;
-int b = 3;
-
-Console.WriteLine($"a + b = {a + b}");    // = 13
-Console.WriteLine($"a - b = {a - b}");    // = 7
-Console.WriteLine($"a * b = {a * b}");    // = 30
-Console.WriteLine($"a / b = {a / b}");    // = 3 (ganzzahl)
-Console.WriteLine($"(double)a / b = {(double)a / b}");    // = 3.333
-Console.WriteLine($"a % b = {a % b}");    // 1
-```
-
-----
-
-## Operatoren Beispiele - Zuweisungen
-
-```c#
-int x = 5;
-x += 2; // x = x + 2
-Console.WriteLine($"x nach +=2: {x}");    // = 7
-x *= 3; // x = x * 3
-Console.WriteLine($"x nach *=3: {x}");    // = 21
-```
-
-----
-
-## Operatoren Beispiele - Vergleich
-
-```c#
-int a = 10;
-int b = 3;
-Console.WriteLine($"a == b: {a == b}");    // false
-Console.WriteLine($"a != b: {a != b}");    // true
-Console.WriteLine($"a > b: {a > b}");      // true
-Console.WriteLine($"a <= b: {a <= b}");    // false
-```
-
-----
-
-## Operatoren Beispiele - Logisch
-
-```c#
-int a = 10;
-int b = 3;
-bool cond1 = (a > b) && (b > 0); // true (und)
-bool cond2 = (a < b) || (b > 0); // true (oder)
-Console.WriteLine($"(a > b) && (b > 0): {cond1}");
-Console.WriteLine($"(a < b) || (b > 0): {cond2}");
-Console.WriteLine($"! (a == b): {!(a == b)}");    // true
-```
-
-----
-
-## Operatoren Beispiele - Inkrement / Dekrement
-
-```c#
-int i = 0;
-Console.WriteLine($"i = {i}");      // 0
-Console.WriteLine($"i++: {i++}");   // 0 (da das ++ danach evaluiert wird)
-Console.WriteLine($"i: {i}");       // 1
-i = 0;
-Console.WriteLine($"++i: {++i}");   // 1
-```
+- Der Typ links verändert die bereits rechts ausgeführte Ganzzahldivision nicht.
+- Für double ergebnis = 5.0 / 2; wird 2.5 berechnet.
+- Abschneiden bedeutet Richtung null, nicht allgemeines Abrunden: -5 / 2 ergibt -2. Nur bei Nachfrage vertiefen.
+- Ob die Ausgabe Punkt oder Komma verwendet, hängt von der Kultur der Laufzeitumgebung ab; im Quellcode steht immer ein Punkt.
 
 ---
 
-## Interaktionen
+## Aufgabe 2: Passende Datentypen wählen
 
-- Benutzereingaben können mit `Console.ReadLine();` gelesen werden
-- Wird immer als string eingelesen.
-- Konvertierungen zu gängigen typen:
-- Integer: `Convert.ToInt32(alterAlsText);`
-- Float: `Convert.ToSingle("41.00027357");`
+**Ziel:** Variablen mit passenden Typen anlegen, lesen und ändern.
+
+**Anforderungen:**
+
+1. Legen Sie Variablen an: Teilnehmerzahl `24`, Raum `"A204"`, Gruppenkennzeichen `'B'`, Temperatur `21.5` als `float`, Veranstaltung aktiv `true`.
+2. Geben Sie jede Variable einzeln aus.
+3. Weisen Sie der Teilnehmerzahl anschließend `25` zu und geben Sie sie erneut aus.
+
+**Tipps:** Nutzen Sie die Typentabelle. Für `float` ist das Suffix `F` erforderlich. Beim Ändern entfällt der Typ vor dem Namen.
 
 Note:
-Praktische Hinweise:
-- Console.ReadLine() kann null zurückgeben (z. B. bei EOF) — prüfen.
-- Kulturabhängigkeit: Dezimaltrennzeichen kann kulturell variieren — bei Bedarf CultureInfo verwenden.
+- Übungsblock 2, etwa 5 Minuten. Erwartet: int, string, char, float, bool. Zusatz bei verbleibender Zeit: long und decimal mit passendem Suffix.
 
-----
+---
 
-## Interaktion: Benutzereingaben lesen
+## Aufgabe 3: Gesamtpreis aktualisieren
 
-```c#
-Console.WriteLine("Bitte gib deinen Namen ein:");
+**Ziel:** Mit Variablen rechnen und gespeicherte Werte ändern.
+
+**Anforderungen:**
+
+1. Legen Sie `anzahl` (`int`, Wert `3`) und `einzelpreis` (`double`, Wert `2.50`) an.
+2. Speichern Sie Anzahl × Einzelpreis in `gesamtpreis` (`double`). Geben Sie ihn aus.
+3. Erhöhen Sie `anzahl` um `2`.
+4. Geben Sie den gespeicherten `gesamtpreis` erneut aus, ohne ihn neu zu berechnen.
+5. Berechnen Sie `gesamtpreis` mit der neuen Anzahl neu und geben Sie ihn aus.
+
+**Tipps:** Alle Schritte in einem Programmlauf. Nutzen Sie `anzahl = anzahl + 2;`. Erwartete Ausgaben: `7.5`, `7.5`, `12.5` (ggf. mit Komma).
+
+Note:
+- Übungsblock 2, etwa 5–7 Minuten. Alle Schritte innerhalb eines Programmlaufs. Der gespeicherte Gesamtpreis ändert sich erst durch die erneute Zuweisung. In Schritt 5 die bestehende Variable verwenden, nicht erneut deklarieren. double dient der bekannten Rechensyntax; für echte Geldberechnungen decimal einordnen.
+
+---
+
+## Texteingaben mit `Console.ReadLine`
+
+```csharp
+Console.WriteLine("Wie heißen Sie?");
 string name = Console.ReadLine();
-Console.WriteLine($"Hallo, {name}!");
+Console.WriteLine("Guten Tag.");
+Console.WriteLine(name);
+```
 
-Console.WriteLine("Bitte gib dein Alter ein:");
+```text
+Wie heißen Sie?
+> Mia
+Guten Tag.
+Mia
+```
+
+`ReadLine()` wartet auf die Eingabe; danach läuft das Programm weiter.
+
+Note:
+- Erst live ausführen: Das Programm wartet, statt bereits alles auszugeben.
+- ReadLine liefert Text, WriteLine erzeugt Ausgabe. Beide Aufrufe nicht verwechseln.
+- Im Konsolenablauf kennzeichnet > eine Eingabe; das Zeichen gehört nicht zur tatsächlichen Ein- oder Ausgabe. Mia wird mit Enter bestätigt und anschließend durch WriteLine(name) ausgegeben.
+
+---
+
+## Texteingaben in Zahlen umwandeln
+
+```csharp
+Console.WriteLine("Wie alt sind Sie in Jahren?");
 string alterAlsText = Console.ReadLine();
-int alter = Convert.ToInt32(alterAlsText);
-Console.WriteLine($"Du bist {alter} Jahre alt.");
+int alterInJahren = Convert.ToInt32(alterAlsText);
+
+int alterNaechstesJahr = alterInJahren + 1;
+Console.WriteLine(alterNaechstesJahr);
 ```
 
-**Wichtig:** Typumwandlung (Parsing) von `string` → `int`
+```text
+Wie alt sind Sie in Jahren?
+> 20
+21
+```
+
+`Convert.ToInt32(...)` wandelt den Text `"20"` in die Zahl `20` um.
 
 Note:
-Ergänzende Punkte:
-- Robustheit: Nutze int.TryParse, um Abstürze bei ungültiger Eingabe zu vermeiden.
-- Validierung: Negative oder unrealistische Werte abfangen.
-- Benutzerfreundlichkeit: Fehlermeldungen geben und erneute Eingabe erlauben.
-
-
----
-
-## Aufgabe 1: Vor- und Nachname kombinieren
-**Ziel:** Das Einlesen von mehreren `string`-Eingaben und deren Verknüpfung üben.
-*   Schreibe ein Programm, das den Benutzer zuerst nach seinem Vornamen fragt.
-*   Lies den Vornamen ein.
-*   Frage den Benutzer anschließend nach seinem Nachnamen.
-*   Lies den Nachnamen ein.
-*   Kombiniere beide Eingaben zu einem vollständigen Namen (mit einem Leerzeichen dazwischen).
-*   Gib den vollständigen Namen in einem Satz aus, z. B.: "Ihr voller Name lautet: Max Mustermann".
+- Namen unterscheiden bewusst Rohtext und Zahl. Erst nach der Umwandlung arithmetisch rechnen.
+- Für dieses Beispiel gültige ganze Zahlen eingeben, etwa 20. Im Konsolenablauf ist 20 die Eingabe und 21 die berechnete Ausgabe.
+- Bei Eingaben wie zwanzig, leerem Text oder zu großen Zahlen kann die Umwandlung zur Laufzeit fehlschlagen. Einmal benennen; robuste Eingabeprüfung folgt später.
+- Keine implizite automatische Umwandlung von string nach int suggerieren.
 
 ---
 
-## Aufgabe 2: Alter in Tagen berechnen
-**Ziel:** Typumwandlung und einfache arithmetische Operationen.
-*   Frage den Benutzer nach seinem Alter in Jahren.
-*   Wandle die Eingabe von einem `string` in einen `int` um.
-*   Berechne das Alter in Tagen (ignoriere dabei Schaltjahre, ein Jahr hat 365 Tage).
-*   Gib das Ergebnis in einem vollständigen Satz aus, z. B.: "Du bist ungefähr [Anzahl] Tage alt."
+## Fehler erkennen und beheben
+
+| Beobachtung | Erste Prüfung |
+|---|---|
+| Programm startet nicht | Erste Compilerfehlermeldung, Zeile, `;`, Namen, Typen |
+| Programm bricht bei Eingabe ab | Passt der eingegebene Text zur erwarteten Zahl? |
+| Ergebnis ist falsch | Werte und Reihenfolge der Berechnungen |
+
+**Kleine Änderung → speichern → starten → Ergebnis prüfen**
+
+Note:
+- Compilerfehler, Laufzeitfehler und logische Fehler anhand der bisherigen Beispiele unterscheiden.
+- Zwischenwerte vorübergehend mit WriteLine ausgeben, um die Rechnung zu verfolgen.
+- Keine vollständige Fehlermeldungsliste verlangen. Erste Ursache beheben, dann erneut starten.
 
 ---
 
-## Aufgabe 3: Der Währungsrechner (Einfach)
-**Ziel:** Mit `double` oder `float` arbeiten und das Ergebnis formatieren.
-*   Lege einen festen Wechselkurs in einer `const`-Variable fest (z. B. `const double EuroToDollar = 1.08;`).
-*   Frage den Benutzer nach einem Euro-Betrag.
-*   Konvertiere die Eingabe in einen `double`.
-*   Berechne den entsprechenden Betrag in US-Dollar.
-*   Gib das Ergebnis aus: "[Betrag] Euro entsprechen [Ergebnis] US-Dollar."
+## Vergleiche und Wahrheitswerte
 
+```csharp
+int alter = 20;
+bool istVolljaehrig = alter >= 18;
+Console.WriteLine(istVolljaehrig);
+```
+
+| Operator | Bedeutung |
+|---|---|
+| `==` / `!=` | Gleich / ungleich |
+| `<` / `>` | Kleiner / größer |
+| `<=` / `>=` | Kleiner oder gleich / größer oder gleich |
+
+**`=` weist zu. `==` vergleicht.**
+
+Note:
+- alter >= 18 ist ein Ausdruck mit dem Typ bool und hier dem Wert true.
+- Console.WriteLine zeigt bool-Werte als True bzw. False; C#-Schlüsselwörter im Code bleiben true und false.
+- Auch alter == 18 und alter != 18 mündlich auswerten lassen.
 
 ---
 
-## Kontrollstrukturen: if-else
+## Bedingungen und Programmablauf
 
-```c#
-int alter = 18;
+Die bisherigen Beispiele führen alle Anweisungen der Reihe nach aus.
+`if` (**wenn**) und `else` (**sonst**) ermöglichen einen bedingten Ablauf.
 
-if (alter >= 18) {
+```text
+                 Alter mindestens 18?
+                    /           \
+               wahr             falsch
+                ↓                  ↓
+        „Volljährig“       „Minderjährig“
+                \                  /
+                 → Weiter im Programm
+```
+
+Die Bedingung ergibt einen `bool`-Wert: `true` oder `false`.
+Pro Durchlauf wird **genau einer** der beiden Zweige ausgeführt.
+
+Note:
+- Zuerst ohne Code mit 20 und 16 Jahren durchgehen. Eine Entscheidung prüft den aktuellen Wert, sie wartet nicht darauf, dass die Bedingung irgendwann wahr wird.
+- Referenz: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
+
+---
+
+## Syntax von `if` und `else`
+
+```csharp [2|3-5|6-9|10]
+int alter = 20;
+if (alter >= 18)
+{
     Console.WriteLine("Volljährig");
-} else {
-    Console.WriteLine("Noch minderjährig");
 }
+else
+{
+    Console.WriteLine("Minderjährig");
+}
+Console.WriteLine("Prüfung beendet.");
 ```
 
 Note:
-Worauf achten:
-- Bedingungen müssen bool zurückliefern.
-- Klammern immer verwenden (auch bei einzeiligen Blöcken) für Lesbarkeit und Fehlervermeidung.
-- Reihenfolge der Bedingungen kann Logik und Performance beeinflussen.
+- Mit Weiter die Syntaxteile markieren: Bedingung, if-Block, else-Block, gemeinsame Fortsetzung. Die Highlights erklären den Aufbau, nicht die Ausführungsreihenfolge eines einzelnen Durchlaufs.
+- Runde Klammern enthalten eine bool-Bedingung. Geschweifte Klammern begrenzen jeweils den zugehörigen Block und müssen paarweise gesetzt werden.
+- Bei true läuft der if-Block, bei false der else-Block. Die letzte Ausgabe folgt in beiden Fällen.
+- Die nächste Folie enthält die Erläuterungen als Nachschlagefolie.
 
 ---
 
-## Verschachtelte Bedingungen
+## `if` und `else`: Bestandteile
 
-```c#
-int note = 2;
+- `if (...)`: Die runden Klammern enthalten die Bedingung.
+- `{ ... }`: Ein Block fasst die zugehörigen Anweisungen zusammen.
+- Der `if`-Block wird ausgeführt, wenn die Bedingung `true` ergibt.
+- Der `else`-Block wird ausgeführt, wenn die Bedingung `false` ergibt.
+- Nach dem gewählten Block geht es mit der gemeinsamen Fortsetzung weiter.
 
-if (note == 1) {
-    Console.WriteLine("Sehr gut");
+Note:
+- Die Erklärungen können bereits auf der Codefolie mündlich gegeben werden. Diese Folie dient zum Nachlesen und kann beim Vortrag zügig weitergeschaltet werden.
+- Bei alter=20 wird Volljährig ausgegeben, bei alter=16 Minderjährig. Prüfung beendet. folgt in beiden Fällen.
+
+---
+
+## Klammern, Einrückung und Semikolon
+
+```csharp
+int alter = 20;
+if (alter >= 18)
+{
+    Console.WriteLine("Volljährig");
+    Console.WriteLine("Erwachsenentarif");
 }
-else if (note == 2) {
-    Console.WriteLine("Gut");
-} else {
-    Console.WriteLine("Andere Note");
+Console.WriteLine("Diese Ausgabe folgt immer.");
+```
+
+- **Kein `;` direkt nach `if (...)` oder `else`.**
+- Die Anweisungen **im Block** enden hier jeweils mit `;`.
+- Einrückung macht den Block lesbar; die `{ }` legen ihn fest.
+- `else` ist optional: Bei `false` wird der `if`-Block übersprungen.
+
+Note:
+- Mit alter=16 beide Ausgaben im Block überspringen und die letzte ausführen. if (...) mit anschließendem Semikolon hätte einen leeren Anweisungskörper und wäre ein typischer Logikfehler.
+- Wir verwenden auch bei einer einzelnen Anweisung immer geschweifte Klammern.
+- In einem Block deklarierte lokale Variablen gelten nur in diesem Block und seinen inneren Blöcken. Benötigt man eine Variable nach if/else, legt man sie vorher an.
+
+---
+
+## Entscheidungs-Demo: 20 Jahre · Bedingung prüfen
+
+```csharp [1|2]
+int alter = 20;
+if (alter >= 18)
+{
+    Console.WriteLine("Volljährig");
 }
+else
+{
+    Console.WriteLine("Minderjährig");
+}
+Console.WriteLine("Prüfung beendet.");
+```
+
+`alter` enthält `20`. `20 >= 18` ergibt `true`.
+
+**Bisher wurde noch nichts ausgegeben.**
+
+Note:
+- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+
+---
+
+## Entscheidungs-Demo: 20 Jahre · Block ausführen und weiter
+
+```csharp [4|10]
+int alter = 20;
+if (alter >= 18)
+{
+    Console.WriteLine("Volljährig");
+}
+else
+{
+    Console.WriteLine("Minderjährig");
+}
+Console.WriteLine("Prüfung beendet.");
+```
+
+Der `if`-Block wird ausgeführt, der `else`-Block übersprungen.
+
+**Ausgabe nach diesen Schritten:**
+
+```text
+Volljährig
+Prüfung beendet.
 ```
 
 Note:
-Tipps:
-- else-if Ketten sind klar lesbar bis zu einer gewissen Komplexität; bei vielen Fällen switch oder Lookup-Struktur erwägen.
-- Vergleich mit == bei Referenzen: bei Objekten auf Equals/GetHashCode achten (hier primitive Typen, daher unproblematisch).
+- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
 
 ---
 
-## `switch`-Struktur
+## Entscheidungs-Demo: 16 Jahre · Bedingung prüfen
 
-```c#
-int wochentag = 3;
-
-switch (wochentag) {
-    case 1:
-        Console.WriteLine("Montag");
-        break;
-    case 2:
-        Console.WriteLine("Dienstag");
-        break;
-    case 3:
-        Console.WriteLine("Mittwoch");
-        break;
-    default:
-        Console.WriteLine("Anderer Tag");
-        break;
+```csharp [1|2]
+int alter = 16;
+if (alter >= 18)
+{
+    Console.WriteLine("Volljährig");
 }
+else
+{
+    Console.WriteLine("Minderjährig");
+}
+Console.WriteLine("Prüfung beendet.");
+```
+
+Neuer Programmlauf mit `16`: `16 >= 18` ergibt `false`.
+
+**Bisher wurde noch nichts ausgegeben.**
+
+Note:
+- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+
+---
+
+## Entscheidungs-Demo: 16 Jahre · Block ausführen und weiter
+
+```csharp [8|10]
+int alter = 16;
+if (alter >= 18)
+{
+    Console.WriteLine("Volljährig");
+}
+else
+{
+    Console.WriteLine("Minderjährig");
+}
+Console.WriteLine("Prüfung beendet.");
+```
+
+Der `if`-Block wird übersprungen, der `else`-Block ausgeführt.
+
+**Ausgabe nach diesen Schritten:**
+
+```text
+Minderjährig
+Prüfung beendet.
 ```
 
 Note:
-Erweiterungen:
-- Fall-through in C# ist nur mit expliziter Goto/Pattern möglich; ansonsten break erforderlich.
-- Moderne C#-Versionen unterstützen Pattern Matching im switch — flexiblere Vergleiche möglich.
+- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
 
 ---
 
-## Guter Stil: Lesbarer Code
+## Logische Operatoren: Bedingungen verknüpfen
 
-- Variablennamen in **camelCase** (z. B. `meinAlter`)
-- Methoden- und Klassennamen in **PascalCase** (z. B. `BerechneSumme`)
-- Aussagekräftige Namen verwenden
-- Kommentare nutzen: `// Erklärung`
-- Saubere Einrückung für bessere Lesbarkeit
-- Typischerweise auf English
+| Operator | Bedeutung | Beispiel |
+|---|---|---|
+| `&&` | Und: beide wahr | `(alter >= 18) && hatTicket` |
+| `\|\|` | Oder: mindestens eine wahr | `hatTicket \|\| stehtAufGaesteliste` |
+| `!` | Nicht: Wahrheitswert umkehren | `!hatTicket` |
 
-Note:
-Praktische Ratschläge:
-- Ein konsistenter Stil vereinfacht Teamarbeit und Wartung.
-- Kurze, aussagekräftige Methoden bevorzugen — Single Responsibility Principle.
-- Kommentare für warum, nicht was (Code sollte das "was" größtenteils ausdrücken).
+`hatTicket` und `stehtAufGaesteliste` sind hier `bool`-Variablen.
 
-----
-
-## Typische Stolpersteine
-
-- Vergessenes `;`
-- Groß-/Kleinschreibung beachten (`alter` ≠ `Alter`)
-- Zuweisung (`=`) vs. Vergleich (`==`)
-- Strings in `"..."`, chars in `'...'`
+- `true && false` ergibt `false`.
+- `true || false` und `true || true` ergeben `true`.
+- `!true` ergibt `false`; `!false` ergibt `true`.
 
 Note:
-Fehlervermeidung:
-- Compiler- und Laufzeitfehler unterscheiden — beide sorgfältig lesen.
-- Unit-Tests und kleine Experimente helfen, Annahmen zu überprüfen.
-- Häufige Fehlerquellen: NullReferenceException — auf null prüfen oder Null-conditional operator verwenden.
+- Oder ist einschließlich: Auch beide wahr ist erlaubt. ! steht vor genau dem Wert oder geklammerten Ausdruck, den es umkehrt.
+- && und || prüfen rechts nur, wenn es für das Ergebnis nötig ist. Keine Seiteneffekte in heutigen Bedingungen.
+- Referenz: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators
 
 ---
 
-## Aufgabe 4: Gerade oder Ungerade?
-**Ziel:** Den Modulo-Operator (`%`) und eine `if-else`-Bedingung verwenden.
-*   Bitte den Benutzer, eine ganze Zahl einzugeben.
-*   Prüfe, ob die Zahl gerade oder ungerade ist.
-    *   **Tipp:** Eine Zahl ist gerade, wenn sie ohne Rest durch 2 teilbar ist.
-*   Gib das Ergebnis entsprechend aus.
+## Zusammengesetzte Bedingungen
+
+```csharp [4]
+int alter = 20;
+bool hatTicket = false;
+bool stehtAufGaesteliste = true;
+if ((alter >= 18) && (hatTicket || stehtAufGaesteliste))
+{
+    Console.WriteLine("Zutritt erlaubt");
+}
+else
+{
+    Console.WriteLine("Kein Zutritt");
+}
+```
+
+`true && (false || true)` → `true && true` → `true`.
+
+Die äußeren `(...)` gehören zu `if`; die inneren gruppieren Teilbedingungen.
+
+Note:
+- Die Markierung zeigt die zusammengesetzte Bedingung. Ausgabe hier: Zutritt erlaubt. Danach fragen: Welche Änderung führt zum else-Block?
+- Zuerst die Klammern auswerten. Ohne Klammern bindet ! stärker als &&, && stärker als ||. Zur Lesbarkeit Bereiche ausdrücklich klammern.
+- alter >= 18 && <= 65 ist kein gültiges C#: Jeden Vergleich vollständig schreiben, etwa (alter >= 18) && (alter <= 65).
 
 ---
 
-## Aufgabe 5: Ticketpreis-Ermittlung
-**Ziel:** Logische Operatoren (`&&`, `||`) und eine `if-else if-else`-Kette nutzen.
-*   Frage den Benutzer nach seinem Alter.
-*   Bestimme den Ticketpreis basierend auf folgenden Regeln:
-    *   Kinder (unter 6 Jahren): frei
-    *   Schüler (6 bis 17 Jahre): 5€
-    *   Erwachsene (18 bis 64 Jahre): 10€
-    *   Senioren (ab 65 Jahren): 7€
-*   Gib den passenden Preis auf der Konsole aus.
+## Aufgabe 4: Vor- und Nachname einlesen
+
+**Ziel:** Texte in zwei Variablen speichern und verwenden.
+
+**Anforderungen:**
+
+1. Fragen Sie nacheinander nach Vor- und Nachname und speichern Sie beide Eingaben in eigenen `string`-Variablen.
+2. Geben Sie beide Werte auf getrennten Zeilen aus.
+
+**Tipps:** Nutzen Sie `Console.ReadLine()` zum Einlesen und `Console.WriteLine(...)` zum Ausgeben.
+
+Note:
+- Übungsblock 3. Aufgaben 4 und 5 zusammen etwa 10–12 Minuten. Gültige Eingaben voraussetzen. Text und Werte dürfen getrennt ausgegeben werden.
 
 ---
 
-## Aufgabe 6: Einfacher Taschenrechner
-**Ziel:** Eine `switch`-Anweisung zur Steuerung des Programmflusses verwenden.
-*   Frage den Benutzer nach einer ersten Zahl.
-*   Frage ihn nach einem Operator (`+`, `-`, `*`, `/`).
-*   Frage ihn nach einer zweiten Zahl.
-*   Verwende eine `switch`-Anweisung, um basierend auf dem Operator die richtige Berechnung durchzuführen.
-*   Gib das Ergebnis der Operation aus.
-*   Füge einen `default`-Fall hinzu, der eine Fehlermeldung ausgibt, wenn ein ungültiger Operator eingegeben wurde.
+## Aufgabe 5: Alter in Tagen berechnen
+
+**Ziel:** Eine Eingabe umwandeln, rechnen und mit `if`/`else` entscheiden.
+
+**Anforderungen:**
+
+1. Lesen Sie das Alter in Jahren ein und wandeln Sie es mit `Convert.ToInt32(...)` in `int` um.
+2. Berechnen Sie das ungefähre Alter in Tagen mit 365 Tagen pro Jahr und geben Sie es aus.
+3. Geben Sie unter 18 Jahren `Minderjährig`, sonst `Volljährig` aus.
+
+**Tipps:** Testen Sie die Grenze: 17 → 6205 Tage / minderjährig; 18 → 6570 Tage / volljährig; 20 → 7300 Tage / volljährig.
+
+Note:
+- Übungsblock 3. Die Rechnung ignoriert Schaltjahre und das genaue Geburtsdatum. Bedingung und beide Blöcke erklären lassen.
 
 ---
 
-## Aufgabe 7: Noten in Text umwandeln
-**Ziel:** Eine `switch`-Anweisung für eine klare Zuordnung nutzen.
-*   Der Benutzer soll eine Schulnote als Zahl (1-6) eingeben.
-*   Das Programm soll die Note in Text umwandeln:
-    *   1: "Sehr gut"
-    *   2: "Gut"
-    *   3: "Befriedigend"
-    *   4: "Ausreichend"
-    *   5: "Mangelhaft"
-    *   6: "Ungenügend"
-*   Gib die textuelle Bewertung aus.
-*   Wenn eine andere Zahl eingegeben wird, soll eine Meldung wie "Ungültige Note" erscheinen.
+## Aufgabe 6: Gerade oder ungerade?
 
+**Ziel:** Restberechnung und Vergleich als Bedingung verwenden.
+
+**Anforderungen:**
+
+1. Lesen Sie eine ganze Zahl ein.
+2. Prüfen Sie mit `%` und `if`/`else`, ob die Zahl gerade oder ungerade ist.
+3. Geben Sie das Ergebnis als Text aus.
+
+**Tipps:** `zahl % 2 == 0` prüft, ob kein Rest bleibt. Testfälle: `8` → gerade, `7` → ungerade, `0` → gerade.
+
+Note:
+- Übungsblock 3, etwa 5–8 Minuten. Erst den Ablauf beschreiben lassen. Zusatz: negative Zahlen testen.
 
 ---
 
-## Was ist C# und .NET?
+## Aufgabe 7: Zutritt prüfen
 
-- C# = Programmiersprache, entworfen von Microsoft
-- .NET = Plattform/Framework, Laufzeit und Bibliotheken
-- Ziel: Produktive Entwicklung, starke Typisierung, breite Bibliotheksunterstützung
+**Ziel:** Vergleiche und logische Operatoren in einer Entscheidung kombinieren.
 
-Note:
-Kurz und bündig:
-- C# ist die Sprache; .NET stellt Laufzeit, Basisklassen (BCL) und Tools.
-- .NET ist cross-platform (.NET Core / .NET 5+) — läuft auf Windows, Linux, macOS.
-- Typische Anwendungsfälle: Desktop (WinForms/WPF), Web (ASP.NET), Spiele (Unity), Cloud/Server.
-- Wichtig: Konzepte (Typen, GC, Assemblies) wiederholen sich in allen Umgebungen.
+**Anforderungen:**
 
-----
+1. Legen Sie `alter` als `int` sowie `hatTicket` und `stehtAufGaesteliste` als `bool` mit festen Startwerten an.
+2. Erlauben Sie den Zutritt ab 18 Jahren, wenn ein Ticket vorliegt oder die Person auf der Gästeliste steht. Geben Sie andernfalls `Kein Zutritt` aus.
+3. Testen Sie: 18 / true / false → erlaubt; 18 / false / true → erlaubt; 18 / false / false → abgelehnt; 17 / true / true → abgelehnt.
 
-## Vom C#-Code zum Bytecode (IL)
-
-- C#-Quellcode → Compiler (Roslyn) → Intermediate Language (IL) / MSIL
-- IL ist plattformunabhängiger Zwischencode mit Metadaten in Assemblies (.dll/.exe)
-- Assemblies enthalten Typinformationen, Referenzen und Ressourcen
+**Tipps:** Gruppieren Sie die Oder-Bedingung mit Klammern. Ergänzen Sie mit `!hatTicket` eine Ausgabe darüber, ob das Ticket fehlt.
 
 Note:
-Technische Details:
-- Roslyn erzeugt IL und fügt Metadaten hinzu (Signaturen, Attributes).
-- IL ist nicht direkt maschinenspezifisch — ermöglicht Portabilität zwischen Implementierungen (.NET Runtime, Mono).
-- Assemblies können signiert (Strong Name) oder paketiert (NuGet) geliefert werden.
-- Für Debugging: PDB-Dateien enthalten Symbol-Informationen.
-
-----
-
-## Die .NET-Laufzeit (CLR / .NET Runtime)
-
-- Runtime stellt Ausführungsumgebung bereit: Typprüfung, Sicherheitsmodelle, Garbage Collector
-- JIT-Compiler wandelt IL zur Laufzeit in nativen Maschinencode um
-- Verschiedene Implementierungen: CoreCLR / RyuJIT, Mono, .NET Native / AOT-Varianten
-
-Note:
-Was die Runtime leistet:
-- Laufzeit sorgt für Speicherverwaltung, Typensicherheit, Exception-Handling und Interoperabilität.
-- JIT erzeugt performanten nativen Code zur Laufzeit; moderne Runtimes nutzen Tiered Compilation.
-- AOT-Optionen (z. B. Native AOT) übersetzen IL vorab, nützlich für Startzeit/Deploy ohne JIT.
-- Unterschiede zwischen Implementierungen können Verhalten und Performance beeinflussen.
-
-----
-
-## Tools und Ecosystem: Compiler, SDK, CLI
-
-- Roslyn = moderner C#-Compiler + APIs für Analyse/Refactoring
-- dotnet CLI, MSBuild, NuGet (Paketverwaltung) steuern Build & Dependencies
-- IDEs/Editoren: Visual Studio, VS Code (+ C#-Extension), Rider
-
-Note:
-Praktische Hinweise:
-- dotnet SDK enthält Compiler, Runtime-Verweise, Templates und CLI-Befehle (build, run, publish).
-- MSBuild orchestriert Kompilierung, Resource-Embedding und Packaging.
-- NuGet erlaubt Wiederverwendung von Bibliotheken; Versionierung und Transitive Abhängigkeiten beachten.
-- Roslyn erlaubt Code-Analyse/Code-Fixes — nützlich für Linting und Refactoring.
-
-----
-
-## Unter der Haube: Garbage Collector & JIT/AOT
-
-- Garbage Collector (GC): automatische Speicherbereinigung, Generationenmodell (0/1/2)
-- JIT wandelt IL in nativen Code bei Bedarf; Tiered JIT und Inline-Optimierungen verbessern Performance
-- AOT (Ahead-of-Time) kompiliert vorab für bessere Startzeiten / kleinere Overhead-Fälle
-
-Note:
-Wichtige Einblicke:
-- GC-Familien: Workstation vs Server GC; Auswirkungen auf Latenz und Durchsatz.
-- Generational GC optimiert für kurze Lebenszeit vieler Objekte — typische App-Pattern berücksichtigen.
-- JIT bietet Profil-basierte Optimierungen; Tiered JIT kompiliert zuerst schnell, optimiert später.
-- AOT reduziert JIT-Overhead, kann aber größere Binaries oder eingeschränkte Reflection verursachen.
-- Debugging/Performance: Profiling-Tools (dotnet-trace, dotnet-counters, Visual Studio Profiler) verwenden.
+- Übungsblock 3, etwa 5 Minuten. Bei wenig Zeit Aufgabe 6 oder 7 zuhause fertigstellen. Keine bool-Eingabekonvertierung verlangen.
 
 ---
 
 ## Zusammenfassung
 
-Heute gelernt:
-- Erste C#-Programme ausführen
-- Variablen und Datentypen verwenden
-- Operatoren und Benutzereingaben
-- Kontrollstrukturen und Schleifen
+- Ein Programm verarbeitet Anweisungen und Werte.
+- Eine Variable hat einen **Typ**, einen **Namen** und einen **aktuellen Wert**.
+- Eine Zuweisung berechnet rechts einen Wert und speichert ihn links.
+- Berechnete Ergebnisse aktualisieren sich erst durch eine neue Zuweisung.
+- Eingabe → Verarbeitung → Ausgabe bildet den Ablauf kleiner Programme.
+- `if` und `else` wählen anhand einer `bool`-Bedingung einen Codeblock.
+- `&&`, `||` und `!` verknüpfen oder verneinen Bedingungen.
 
 Note:
-Abschließende Hinweise:
-- Fokus auf Verständnis der Grundlagen statt perfekter Syntax.
-- Empfohlene nächste Schritte: kleine Tasks zuhause wiederholen, Dokumentation (Microsoft Docs) konsultieren.
-- Fehler sind Lernchance — Debugging lernen.
-
+- Hier kann der Pflichtteil enden. Keine Schleifen oder weiterführenden Themen als bereits gelernt aufführen.
+- Für zuhause: Aufgaben 2–7 erneut ohne Vorlage bearbeiten und jede Zeile erklären.
+- Optionales Material abhängig vom Lerntempo auswählen. Nicht alle Zusatzaufgaben müssen heute gelöst werden.
 
 ---
 
-## Aufgabe 8: Schaltjahr-Rechner
-**Ziel:** Komplexe logische Bedingungen mit `if-else` und `&&` / `||` umsetzen.
-*   Bitte den Benutzer, eine Jahreszahl einzugeben.
-*   Prüfe, ob es sich um ein Schaltjahr handelt. Die Regeln dafür sind:
-    1.  Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist.
-    2.  **Ausnahme:** Wenn das Jahr auch durch 100 teilbar ist, ist es **kein** Schaltjahr.
-    3.  **Ausnahme von der Ausnahme:** Wenn das Jahr jedoch durch 400 teilbar ist, ist es **doch** ein Schaltjahr.
-*   Gib aus, ob das eingegebene Jahr ein Schaltjahr ist oder nicht.
-*   **Beispiele:** 2000 (ist ein Schaltjahr), 2024 (ist ein Schaltjahr), 1900 (kein Schaltjahr), 2023 (kein Schaltjahr).
+## Optionale Vertiefung
+
+Ergänzende Themen und Aufgaben:
+
+- Text und Werte gemeinsam ausgeben
+- Dezimaleingaben und Aufgabe 8
+- `var` und kürzere Zuweisungen
+- Mehr als zwei Fälle und Aufgabe 9
+- `switch` und Aufgaben 10–11
+- Zusatzaufgaben 12–14
+
+Note:
+- Deutliche Grenze zum Kernteil. Bei Bedarf einzelne Folien auswählen.
+- Das Ziel bleibt: Code verstehen und den Ablauf erklären können.
 
 ---
 
-## Aufgabe 9: Taschenrechner mit Fehlerabfrage
-**Ziel:** Bestehende Logik erweitern und Randfälle (Edge Cases) behandeln.
-*   Erweitere den "Einfachen Taschenrechner" aus Aufgabe 6.
-*   Füge eine `if`-Bedingung hinzu, die speziell den Fall der Division durch Null abfängt.
-*   Wenn der Benutzer versucht, durch `0` zu teilen, soll statt eines Fehlers eine verständliche Meldung ausgegeben werden, z. B. "Fehler: Division durch Null ist nicht erlaubt!". Die Berechnung soll dann nicht ausgeführt werden.
+## Optional: Text und Variablen gemeinsam ausgeben
+
+```csharp
+string name = "Mia";
+int alter = 20;
+
+Console.WriteLine($"{name} ist {alter} Jahre alt.");
+```
+
+Ausgabe:
+
+```text
+Mia ist 20 Jahre alt.
+```
+
+`$"..."` erlaubt, Werte mit `{...}` in einen Text einzusetzen.
+
+Note:
+- Der Begriff ist String-Interpolation. Das Dollarzeichen steht vor dem öffnenden Anführungszeichen.
+- Die geschweiften Klammern markieren hier einzusetzende Werte und werden nicht mit ausgegeben.
+- Ohne Dollarzeichen würden die Klammern und Namen wörtlich im Text erscheinen.
+- Formatangaben wie :0.00 erst im optionalen Teil besprechen.
 
 ---
 
-## Aufgabe 10: Einfache Login-Simulation
-**Ziel:** String-Vergleiche und verschachtelte `if`-Bedingungen anwenden.
-*   Lege einen Benutzernamen und ein Passwort als `const string`-Variablen im Code fest (z. B. `const string correctUser = "admin";`).
-*   Frage den Benutzer nacheinander nach seinem Benutzernamen und seinem Passwort.
-*   Überprüfe die Eingaben und gib unterschiedliche Meldungen aus:
-    *   Wenn der Benutzername falsch ist: "Benutzername nicht gefunden."
-    *   Wenn der Benutzername korrekt, aber das Passwort falsch ist: "Falsches Passwort."
-    *   Wenn beides korrekt ist: "Login erfolgreich! Willkommen."
-*   **Tipp:** Hierfür benötigst du eine verschachtelte `if`-Struktur. Die äußere prüft den Namen, die innere das Passwort.
+## Optional: Dezimalzahlen einlesen
+
+```csharp
+Console.WriteLine("Betrag in Euro?");
+string betragAlsText = Console.ReadLine();
+double euro = Convert.ToDouble(betragAlsText);
+double wechselkurs = 1.08;
+double dollar = euro * wechselkurs;
+
+Console.WriteLine($"Ergebnis: {dollar:0.00} US-Dollar");
+```
+
+```text
+Betrag in Euro?
+> 10
+Ergebnis: 10.80 US-Dollar
+```
+
+`Convert.ToDouble(...)` wandelt Text in eine Zahl um; `:0.00` formatiert die Ausgabe.
+
+Note:
+- Anders als Dezimalzahlen im Quellcode hängt das akzeptierte Eingabeformat von der Kultur der Laufzeitumgebung ab: etwa 10.50 oder 10,50. Vor der Übung ein gültiges Format live zeigen.
+- Formatierung betrifft die Ausgabe, nicht den gespeicherten Wert. Der Konsolenablauf zeigt eine Umgebung mit Dezimalpunkt; die Ausgabe kann auch 10,80 lauten.
+- 1.08 ist ein frei gewählter Übungskurs, kein aktueller Wechselkurs.
+- Wie bei int setzen wir vorerst gültige Eingaben voraus. TryParse und Kultursteuerung später vertiefen.
+
+---
+
+## Aufgabe 8: Währungsrechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Dezimaleingaben verarbeiten und Ergebnisse formatieren.
+
+**Anforderungen:**
+
+1. Legen Sie `double wechselkurs = 1.08;` als festen Übungskurs an.
+2. Lesen Sie einen Euro-Betrag als `double` ein und berechnen Sie den Betrag in US-Dollar.
+3. Geben Sie Eingabe und Ergebnis mit zwei Nachkommastellen aus.
+
+**Tipps:** Verwenden Sie `Convert.ToDouble(...)` und z. B. `{dollar:0.00}` in einem interpolierten Text. 10 Euro ergeben 10.80 US-Dollar.
+
+Note:
+- Optional. Der Kurs ist frei gewählt. Eingabeformat und Dezimaltrennzeichen hängen von der Laufzeitkultur ab.
+
+---
+
+## Optional: Typableitung mit `var`
+
+```csharp
+var alter = 20;      // int
+var laenge = 1.75;   // double
+var name = "Mia";   // string
+```
+
+Der Compiler bestimmt den Typ aus dem Startwert.
+
+Auch mit `var` bleibt der Typ fest: `alter` kann danach keinen Text speichern.
+
+Note:
+- var ist eine alternative Schreibweise für lokale Variablendeklarationen mit Startwert, kein zusätzlicher Datentyp.
+- Zu Beginn sind explizite Typen hilfreich, weil sie die Struktur sichtbar machen.
+- var alter; ohne Startwert funktioniert nicht, weil der Typ nicht abgeleitet werden kann.
+
+---
+
+## Optional: Kurzformen der Zuweisung
+
+```csharp
+int punkte = 10;
+
+punkte += 5;   // Hier gleichbedeutend mit: punkte = punkte + 5;
+punkte -= 2;   // Hier gleichbedeutend mit: punkte = punkte - 2;
+punkte++;      // Erhöht punkte um 1
+```
+
+Danach enthält `punkte` den Wert `14`.
+
+Note:
+- Nur zeigen, wenn die lange Form der Zuweisung verstanden wurde.
+- ++ ausschließlich als eigene Anweisung verwenden. Präfix/Postfix innerhalb anderer Ausdrücke heute auslassen.
+- *= und /= existieren ebenfalls, müssen aber nicht einzeln eingeübt werden.
+
+---
+
+## Optional: Mehrere Fälle mit `else if`
+
+```csharp
+int alter = 16;
+
+if (alter < 6)
+{
+    Console.WriteLine("Eintritt frei");
+}
+else if (alter < 18)
+{
+    Console.WriteLine("Ticket: 5 Euro");
+}
+else
+{
+    Console.WriteLine("Erwachsenentarif");
+}
+```
+
+Die erste zutreffende Bedingung bestimmt den ausgeführten Block.
+`else if (...)` prüft nur weiter, wenn bisher keine Bedingung wahr war.
+Das abschließende `else` fängt die übrigen Fälle ab.
+
+Note:
+- Bei 16: erste Bedingung false, zweite true, daher Ticket: 5 Euro.
+- Die zweite Bedingung wird nur geprüft, wenn die erste falsch war. Hier ist also bereits bekannt, dass alter mindestens 6 ist.
+- Reihenfolge ist entscheidend. Testwerte an Grenzen: 5, 6, 17 und 18.
+
+---
+
+## Aufgabe 9: Ticketpreis ermitteln
+
+*Optionale Vertiefung*
+
+**Ziel:** Mehrere Fälle mit `if`–`else if`–`else` unterscheiden.
+
+**Anforderungen:**
+
+1. Lesen Sie ein Alter ein.
+2. Bestimmen Sie den Preis: unter 6 → frei; 6–17 → 5 Euro; 18–64 → 10 Euro; ab 65 → 7 Euro.
+3. Geben Sie den passenden Preis aus.
+
+**Tipps:** Prüfen Sie die Altersgrenzen in aufsteigender Reihenfolge. Testen Sie `5`, `6`, `17`, `18`, `64` und `65`.
+
+Note:
+- Optional. Bei aufsteigenden Grenzen braucht man keine logischen Operatoren. Zusatz: negative Altersangaben ablehnen.
+
+---
+
+## Optional: Fallunterscheidung mit `switch`
+
+```csharp
+int note = 2;
+
+switch (note)
+{
+    case 1:
+        Console.WriteLine("Sehr gut");
+        break;
+    case 2:
+        Console.WriteLine("Gut");
+        break;
+    default:
+        Console.WriteLine("Andere Note");
+        break;
+}
+```
+
+- `switch (...)` enthält den zu prüfenden Wert; `{ ... }` umfasst die Fälle.
+- `case 1:` beginnt den Fall für den Wert `1`.
+- `break;` beendet den `switch`-Block.
+- `default:` gilt, wenn kein `case` passt.
+
+Note:
+- switch wählt anhand eines Werts einen passenden Fall. Hier wird Gut ausgegeben.
+- case beschreibt einen festen Vergleichswert, default den Fall ohne passende Zuordnung.
+- break beendet hier den switch-Block; danach geht das Programm weiter.
+- Moderne Varianten und Pattern Matching heute auslassen.
+
+---
+
+## Aufgabe 10: Taschenrechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Mit `switch` zwischen festen Rechenoperationen wählen.
+
+**Anforderungen:**
+
+1. Lesen Sie eine Zahl, einen Operator als Text und eine zweite Zahl ein. Verwenden Sie `double` für die Zahlen.
+2. Berechnen Sie mit `switch` das Ergebnis für `"+"`, `"-"`, `"*"` oder `"/"` und geben Sie es aus.
+3. Melden Sie im `default`-Fall einen unbekannten Operator.
+
+**Tipps:** Ein Fall beginnt mit `case "+":` und endet hier mit `break;`. Testen Sie zunächst gültige Zahlen und bei Division einen Divisor ungleich 0.
+
+Note:
+- Optional. Alle vier Operationen und einen unbekannten Operator testen. Aufgabe 13 ergänzt die Prüfung auf null.
+
+---
+
+## Aufgabe 11: Noten in Text umwandeln
+
+*Optionale Vertiefung*
+
+**Ziel:** Feste Werte mit `switch` zuordnen.
+
+**Anforderungen:**
+
+1. Lesen Sie eine Schulnote als ganze Zahl ein.
+2. Ordnen Sie zu: 1 → Sehr gut; 2 → Gut; 3 → Befriedigend; 4 → Ausreichend; 5 → Mangelhaft; 6 → Ungenügend.
+3. Geben Sie für andere Zahlen `Ungültige Note` aus.
+
+**Tipps:** Beginnen Sie mit zwei `case`-Fällen. Ergänzen Sie die übrigen und `default`. Testen Sie auch `0` und `7`.
+
+Note:
+- Optional. break beendet den switch, nicht das gesamte Programm.
+
+---
+
+## Aufgabe 12: Schaltjahr-Rechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Mehrere Teilbedingungen zu einer Entscheidung verbinden.
+
+**Anforderungen:**
+
+1. Lesen Sie eine positive Jahreszahl ein.
+2. Ein Jahr ist ein Schaltjahr, wenn es durch 4, aber nicht durch 100 teilbar ist, oder wenn es durch 400 teilbar ist.
+3. Geben Sie aus, ob das Jahr ein Schaltjahr ist.
+
+**Tipps:** Verwenden Sie `%`, `==`, `!=`, `&&`, `||` und Klammern. Testfälle: 2000 und 2024 → ja; 1900 und 2023 → nein.
+
+Note:
+- Optional. Gregorianische Regel als Rechenübung. Teilbedingungen zuerst einzeln formulieren.
+
+---
+
+## Aufgabe 13: Division durch null abfangen
+
+*Optionale Vertiefung*
+
+**Ziel:** Eine bestehende Entscheidung um einen Sonderfall erweitern.
+
+**Anforderungen:**
+
+1. Erweitern Sie den Taschenrechner aus Aufgabe 10.
+2. Prüfen Sie im Divisionsfall die zweite Zahl: Bei `0` geben Sie eine verständliche Meldung aus und führen die Division nicht aus.
+3. Andernfalls berechnen Sie das Ergebnis wie bisher.
+
+**Tipps:** Verwenden Sie `if`/`else` im passenden `case`-Block. Testen Sie `10 / 2` und `10 / 0`.
+
+Note:
+- Optional. double-Division durch null kann Infinity oder NaN ergeben. Die fachliche Regel soll dies hier verhindern.
+
+---
+
+## Aufgabe 14: Login-Simulation
+
+*Optionale Vertiefung*
+
+**Ziel:** Textvergleiche und verschachtelte Entscheidungen anwenden.
+
+**Anforderungen:**
+
+1. Legen Sie `korrekterName = "admin"` und `korrektesPasswort = "uebung"` als `string`-Variablen an.
+2. Lesen Sie einen Namen und ein Passwort ein.
+3. Geben Sie aus: Name falsch → `Benutzername nicht gefunden.`; nur Passwort falsch → `Falsches Passwort.`; beide richtig → `Login erfolgreich!`.
+
+**Tipps:** Vergleichen Sie mit `==`. Prüfen Sie das Passwort innerhalb des passenden Namensfalls mit einer weiteren `if`/`else`-Anweisung. Testen Sie alle drei Fälle.
+
+Note:
+- Optional. Reine Ablaufübung, kein Vorbild für ein echtes Login. == berücksichtigt bei diesen Textvergleichen die Groß-/Kleinschreibung.

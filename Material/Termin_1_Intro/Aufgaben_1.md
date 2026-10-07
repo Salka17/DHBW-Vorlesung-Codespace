@@ -1,104 +1,208 @@
-## Aufgabe 1: Vor- und Nachname kombinieren
-**Ziel:** Das Einlesen von mehreren `string`-Eingaben und deren Verknüpfung üben.
-*   Schreibe ein Programm, das den Benutzer zuerst nach seinem Vornamen fragt.
-*   Lies den Vornamen ein.
-*   Frage den Benutzer anschließend nach seinem Nachnamen.
-*   Lies den Nachnamen ein.
-*   Kombiniere beide Eingaben zu einem vollständigen Namen (mit einem Leerzeichen dazwischen).
-*   Gib den vollständigen Namen in einem Satz aus, z. B.: "Ihr voller Name lautet: Max Mustermann".
+# Termin 1: Übungen
 
----
+Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **▶ Run**. Verwenden Sie pro Aufgabe einen eigenen Programmlauf. Bei Eingaben setzen wir vorerst gültige Werte voraus.
 
-## Aufgabe 2: Alter in Tagen berechnen
-**Ziel:** Typumwandlung und einfache arithmetische Operationen.
-*   Frage den Benutzer nach seinem Alter in Jahren.
-*   Wandle die Eingabe von einem `string` in einen `int` um.
-*   Berechne das Alter in Tagen (ignoriere dabei Schaltjahre, ein Jahr hat 365 Tage).
-*   Gib das Ergebnis in einem vollständigen Satz aus, z. B.: "Du bist ungefähr [Anzahl] Tage alt."
+## Übungsblock 1: Setup und erste Änderungen
 
----
+### Aufgabe 1: Programm starten und verändern
 
-## Aufgabe 3: Der Währungsrechner (Einfach)
-**Ziel:** Mit `double` oder `float` arbeiten und das Ergebnis formatieren.
-*   Lege einen festen Wechselkurs in einer `const`-Variable fest (z. B. `const double EuroToDollar = 1.08;`).
-*   Frage den Benutzer nach einem Euro-Betrag.
-*   Konvertiere die Eingabe in einen `double`.
-*   Berechne den entsprechenden Betrag in US-Dollar.
-*   Gib das Ergebnis aus: "[Betrag] Euro entsprechen [Ergebnis] US-Dollar."
+*Übungsblock 1*
 
-## Aufgabe 4: Gerade oder Ungerade?
-**Ziel:** Den Modulo-Operator (`%`) und eine `if-else`-Bedingung verwenden.
-*   Bitte den Benutzer, eine ganze Zahl einzugeben.
-*   Prüfe, ob die Zahl gerade oder ungerade ist.
-    *   **Tipp:** Eine Zahl ist gerade, wenn sie ohne Rest durch 2 teilbar ist.
-*   Gib das Ergebnis entsprechend aus.
+**Ziel:** Das vorbereitete Projekt bearbeiten und ausführen.
 
----
+**Anforderungen:**
 
-## Aufgabe 5: Ticketpreis-Ermittlung
-**Ziel:** Logische Operatoren (`&&`, `||`) und eine `if-else if-else`-Kette nutzen.
-*   Frage den Benutzer nach seinem Alter.
-*   Bestimme den Ticketpreis basierend auf folgenden Regeln:
-    *   Kinder (unter 6 Jahren): frei
-    *   Schüler (6 bis 17 Jahre): 5€
-    *   Erwachsene (18 bis 64 Jahre): 10€
-    *   Senioren (ab 65 Jahren): 7€
-*   Gib den passenden Preis auf der Konsole aus.
+1. Öffnen Sie die vorbereitete C#-Datei im Codespace und starten Sie sie über **▶ Run**.
+2. Ändern Sie einen ausgegebenen Text und ergänzen Sie eine weitere Textausgabe.
+3. Speichern und starten Sie erneut. Prüfen Sie Inhalt und Reihenfolge der Ausgaben.
 
----
+**Tipps:** Eine Ausgabe lautet z. B. `Console.WriteLine("Hallo!");`. Achten Sie auf `"..."`, `(...)` und `;`.
 
-## Aufgabe 6: Einfacher Taschenrechner
-**Ziel:** Eine `switch`-Anweisung zur Steuerung des Programmflusses verwenden.
-*   Frage den Benutzer nach einer ersten Zahl.
-*   Frage ihn nach einem Operator (`+`, `-`, `*`, `/`).
-*   Frage ihn nach einer zweiten Zahl.
-*   Verwende eine `switch`-Anweisung, um basierend auf dem Operator die richtige Berechnung durchzuführen.
-*   Gib das Ergebnis der Operation aus.
-*   Füge einen `default`-Fall hinzu, der eine Fehlermeldung ausgibt, wenn ein ungültiger Operator eingegeben wurde.
+## Übungsblock 2: Datentypen und Variablen
 
----
+### Aufgabe 2: Passende Datentypen wählen
 
-## Aufgabe 7: Noten in Text umwandeln
-**Ziel:** Eine `switch`-Anweisung für eine klare Zuordnung nutzen.
-*   Der Benutzer soll eine Schulnote als Zahl (1-6) eingeben.
-*   Das Programm soll die Note in Text umwandeln:
-    *   1: "Sehr gut"
-    *   2: "Gut"
-    *   3: "Befriedigend"
-    *   4: "Ausreichend"
-    *   5: "Mangelhaft"
-    *   6: "Ungenügend"
-*   Gib die textuelle Bewertung aus.
-*   Wenn eine andere Zahl eingegeben wird, soll eine Meldung wie "Ungültige Note" erscheinen.
+*Übungsblock 2*
 
----
+**Ziel:** Variablen mit passenden Typen anlegen, lesen und ändern.
 
-## Aufgabe 8: Schaltjahr-Rechner
-**Ziel:** Komplexe logische Bedingungen mit `if-else` und `&&` / `||` umsetzen.
-*   Bitte den Benutzer, eine Jahreszahl einzugeben.
-*   Prüfe, ob es sich um ein Schaltjahr handelt. Die Regeln dafür sind:
-    1.  Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist.
-    2.  **Ausnahme:** Wenn das Jahr auch durch 100 teilbar ist, ist es **kein** Schaltjahr.
-    3.  **Ausnahme von der Ausnahme:** Wenn das Jahr jedoch durch 400 teilbar ist, ist es **doch** ein Schaltjahr.
-*   Gib aus, ob das eingegebene Jahr ein Schaltjahr ist oder nicht.
-*   **Beispiele:** 2000 (ist ein Schaltjahr), 2024 (ist ein Schaltjahr), 1900 (kein Schaltjahr), 2023 (kein Schaltjahr).
+**Anforderungen:**
 
----
+1. Legen Sie Variablen an: Teilnehmerzahl `24`, Raum `"A204"`, Gruppenkennzeichen `'B'`, Temperatur `21.5` als `float`, Veranstaltung aktiv `true`.
+2. Geben Sie jede Variable einzeln aus.
+3. Weisen Sie der Teilnehmerzahl anschließend `25` zu und geben Sie sie erneut aus.
 
-## Aufgabe 9: Taschenrechner mit Fehlerabfrage
-**Ziel:** Bestehende Logik erweitern und Randfälle (Edge Cases) behandeln.
-*   Erweitere den "Einfachen Taschenrechner" aus Aufgabe 6.
-*   Füge eine `if`-Bedingung hinzu, die speziell den Fall der Division durch Null abfängt.
-*   Wenn der Benutzer versucht, durch `0` zu teilen, soll statt eines Fehlers eine verständliche Meldung ausgegeben werden, z. B. "Fehler: Division durch Null ist nicht erlaubt!". Die Berechnung soll dann nicht ausgeführt werden.
+**Tipps:** Nutzen Sie die Typentabelle. Für `float` ist das Suffix `F` erforderlich. Beim Ändern entfällt der Typ vor dem Namen.
 
----
+### Aufgabe 3: Gesamtpreis aktualisieren
 
-## Aufgabe 10: Einfache Login-Simulation
-**Ziel:** String-Vergleiche und verschachtelte `if`-Bedingungen anwenden.
-*   Lege einen Benutzernamen und ein Passwort als `const string`-Variablen im Code fest (z. B. `const string correctUser = "admin";`).
-*   Frage den Benutzer nacheinander nach seinem Benutzernamen und seinem Passwort.
-*   Überprüfe die Eingaben und gib unterschiedliche Meldungen aus:
-    *   Wenn der Benutzername falsch ist: "Benutzername nicht gefunden."
-    *   Wenn der Benutzername korrekt, aber das Passwort falsch ist: "Falsches Passwort."
-    *   Wenn beides korrekt ist: "Login erfolgreich! Willkommen."
-*   **Tipp:** Hierfür benötigst du eine verschachtelte `if`-Struktur. Die äußere prüft den Namen, die innere das Passwort.
+*Übungsblock 2*
+
+**Ziel:** Mit Variablen rechnen und gespeicherte Werte ändern.
+
+**Anforderungen:**
+
+1. Legen Sie `anzahl` (`int`, Wert `3`) und `einzelpreis` (`double`, Wert `2.50`) an.
+2. Speichern Sie Anzahl × Einzelpreis in `gesamtpreis` (`double`). Geben Sie ihn aus.
+3. Erhöhen Sie `anzahl` um `2`.
+4. Geben Sie den gespeicherten `gesamtpreis` erneut aus, ohne ihn neu zu berechnen.
+5. Berechnen Sie `gesamtpreis` mit der neuen Anzahl neu und geben Sie ihn aus.
+
+**Tipps:** Alle Schritte in einem Programmlauf. Nutzen Sie `anzahl = anzahl + 2;`. Erwartete Ausgaben: `7.5`, `7.5`, `12.5` (ggf. mit Komma).
+
+## Übungsblock 3: Eingaben, Berechnungen und Entscheidungen
+
+### Aufgabe 4: Vor- und Nachname einlesen
+
+*Übungsblock 3*
+
+**Ziel:** Texte in zwei Variablen speichern und verwenden.
+
+**Anforderungen:**
+
+1. Fragen Sie nacheinander nach Vor- und Nachname und speichern Sie beide Eingaben in eigenen `string`-Variablen.
+2. Geben Sie beide Werte auf getrennten Zeilen aus.
+
+**Tipps:** Nutzen Sie `Console.ReadLine()` zum Einlesen und `Console.WriteLine(...)` zum Ausgeben.
+
+### Aufgabe 5: Alter in Tagen berechnen
+
+*Übungsblock 3*
+
+**Ziel:** Eine Eingabe umwandeln, rechnen und mit `if`/`else` entscheiden.
+
+**Anforderungen:**
+
+1. Lesen Sie das Alter in Jahren ein und wandeln Sie es mit `Convert.ToInt32(...)` in `int` um.
+2. Berechnen Sie das ungefähre Alter in Tagen mit 365 Tagen pro Jahr und geben Sie es aus.
+3. Geben Sie unter 18 Jahren `Minderjährig`, sonst `Volljährig` aus.
+
+**Tipps:** Testen Sie die Grenze: 17 → 6205 Tage / minderjährig; 18 → 6570 Tage / volljährig; 20 → 7300 Tage / volljährig.
+
+### Aufgabe 6: Gerade oder ungerade?
+
+*Übungsblock 3*
+
+**Ziel:** Restberechnung und Vergleich als Bedingung verwenden.
+
+**Anforderungen:**
+
+1. Lesen Sie eine ganze Zahl ein.
+2. Prüfen Sie mit `%` und `if`/`else`, ob die Zahl gerade oder ungerade ist.
+3. Geben Sie das Ergebnis als Text aus.
+
+**Tipps:** `zahl % 2 == 0` prüft, ob kein Rest bleibt. Testfälle: `8` → gerade, `7` → ungerade, `0` → gerade.
+
+### Aufgabe 7: Zutritt prüfen
+
+*Übungsblock 3*
+
+**Ziel:** Vergleiche und logische Operatoren in einer Entscheidung kombinieren.
+
+**Anforderungen:**
+
+1. Legen Sie `alter` als `int` sowie `hatTicket` und `stehtAufGaesteliste` als `bool` mit festen Startwerten an.
+2. Erlauben Sie den Zutritt ab 18 Jahren, wenn ein Ticket vorliegt oder die Person auf der Gästeliste steht. Geben Sie andernfalls `Kein Zutritt` aus.
+3. Testen Sie: 18 / true / false → erlaubt; 18 / false / true → erlaubt; 18 / false / false → abgelehnt; 17 / true / true → abgelehnt.
+
+**Tipps:** Gruppieren Sie die Oder-Bedingung mit Klammern. Ergänzen Sie mit `!hatTicket` eine Ausgabe darüber, ob das Ticket fehlt.
+
+## Optionale Vertiefung
+
+### Aufgabe 8: Währungsrechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Dezimaleingaben verarbeiten und Ergebnisse formatieren.
+
+**Anforderungen:**
+
+1. Legen Sie `double wechselkurs = 1.08;` als festen Übungskurs an.
+2. Lesen Sie einen Euro-Betrag als `double` ein und berechnen Sie den Betrag in US-Dollar.
+3. Geben Sie Eingabe und Ergebnis mit zwei Nachkommastellen aus.
+
+**Tipps:** Verwenden Sie `Convert.ToDouble(...)` und z. B. `{dollar:0.00}` in einem interpolierten Text. 10 Euro ergeben 10.80 US-Dollar.
+
+### Aufgabe 9: Ticketpreis ermitteln
+
+*Optionale Vertiefung*
+
+**Ziel:** Mehrere Fälle mit `if`–`else if`–`else` unterscheiden.
+
+**Anforderungen:**
+
+1. Lesen Sie ein Alter ein.
+2. Bestimmen Sie den Preis: unter 6 → frei; 6–17 → 5 Euro; 18–64 → 10 Euro; ab 65 → 7 Euro.
+3. Geben Sie den passenden Preis aus.
+
+**Tipps:** Prüfen Sie die Altersgrenzen in aufsteigender Reihenfolge. Testen Sie `5`, `6`, `17`, `18`, `64` und `65`.
+
+### Aufgabe 10: Taschenrechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Mit `switch` zwischen festen Rechenoperationen wählen.
+
+**Anforderungen:**
+
+1. Lesen Sie eine Zahl, einen Operator als Text und eine zweite Zahl ein. Verwenden Sie `double` für die Zahlen.
+2. Berechnen Sie mit `switch` das Ergebnis für `"+"`, `"-"`, `"*"` oder `"/"` und geben Sie es aus.
+3. Melden Sie im `default`-Fall einen unbekannten Operator.
+
+**Tipps:** Ein Fall beginnt mit `case "+":` und endet hier mit `break;`. Testen Sie zunächst gültige Zahlen und bei Division einen Divisor ungleich 0.
+
+### Aufgabe 11: Noten in Text umwandeln
+
+*Optionale Vertiefung*
+
+**Ziel:** Feste Werte mit `switch` zuordnen.
+
+**Anforderungen:**
+
+1. Lesen Sie eine Schulnote als ganze Zahl ein.
+2. Ordnen Sie zu: 1 → Sehr gut; 2 → Gut; 3 → Befriedigend; 4 → Ausreichend; 5 → Mangelhaft; 6 → Ungenügend.
+3. Geben Sie für andere Zahlen `Ungültige Note` aus.
+
+**Tipps:** Beginnen Sie mit zwei `case`-Fällen. Ergänzen Sie die übrigen und `default`. Testen Sie auch `0` und `7`.
+
+### Aufgabe 12: Schaltjahr-Rechner
+
+*Optionale Vertiefung*
+
+**Ziel:** Mehrere Teilbedingungen zu einer Entscheidung verbinden.
+
+**Anforderungen:**
+
+1. Lesen Sie eine positive Jahreszahl ein.
+2. Ein Jahr ist ein Schaltjahr, wenn es durch 4, aber nicht durch 100 teilbar ist, oder wenn es durch 400 teilbar ist.
+3. Geben Sie aus, ob das Jahr ein Schaltjahr ist.
+
+**Tipps:** Verwenden Sie `%`, `==`, `!=`, `&&`, `||` und Klammern. Testfälle: 2000 und 2024 → ja; 1900 und 2023 → nein.
+
+### Aufgabe 13: Division durch null abfangen
+
+*Optionale Vertiefung*
+
+**Ziel:** Eine bestehende Entscheidung um einen Sonderfall erweitern.
+
+**Anforderungen:**
+
+1. Erweitern Sie den Taschenrechner aus Aufgabe 10.
+2. Prüfen Sie im Divisionsfall die zweite Zahl: Bei `0` geben Sie eine verständliche Meldung aus und führen die Division nicht aus.
+3. Andernfalls berechnen Sie das Ergebnis wie bisher.
+
+**Tipps:** Verwenden Sie `if`/`else` im passenden `case`-Block. Testen Sie `10 / 2` und `10 / 0`.
+
+### Aufgabe 14: Login-Simulation
+
+*Optionale Vertiefung*
+
+**Ziel:** Textvergleiche und verschachtelte Entscheidungen anwenden.
+
+**Anforderungen:**
+
+1. Legen Sie `korrekterName = "admin"` und `korrektesPasswort = "uebung"` als `string`-Variablen an.
+2. Lesen Sie einen Namen und ein Passwort ein.
+3. Geben Sie aus: Name falsch → `Benutzername nicht gefunden.`; nur Passwort falsch → `Falsches Passwort.`; beide richtig → `Login erfolgreich!`.
+
+**Tipps:** Vergleichen Sie mit `==`. Prüfen Sie das Passwort innerhalb des passenden Namensfalls mit einer weiteren `if`/`else`-Anweisung. Testen Sie alle drei Fälle.
