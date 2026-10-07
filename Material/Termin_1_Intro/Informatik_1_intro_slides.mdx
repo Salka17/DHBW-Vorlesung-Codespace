@@ -71,10 +71,11 @@ slideOptions:
 Sebastian Schwendemann, David Waidner
 
 Note:
-- Kurz vorstellen und Vorwissen abfragen: Wer hat schon programmiert? Wer noch nie?
-- Keine Programmiererfahrung voraussetzen. Begriffe gemeinsam aufbauen.
-- Fragen sind jederzeit willkommen. Heute zählt das Verstehen kleiner Programme.
-- Präsentation bei 100 % Browserzoom öffnen, möglichst im Vollbild. Bei Änderungen von Zoom oder Fenstergröße die Slide-Ansicht neu laden. slideOptions und der CSS-Block am Dateianfang gehören beim Übertragen nach HackMD dazu.
+- Vorstellung; Vorwissen abfragen
+- Keine Vorkenntnisse; Fragen jederzeit
+- Browserzoom 100 %, Vollbild; nach Größenänderung neu laden
+- HackMD: slideOptions und CSS mitkopieren
+
 
 ---
 
@@ -86,9 +87,10 @@ Note:
 - Weitere Aufgaben zum Üben zwischen den Terminen
 
 Note:
-- Organisatorische Fragen zu Beginn klären.
-- KI-Werkzeuge können zuhause beim Erklären helfen. Erst selbst überlegen, dann Unterstützung nutzen und das Ergebnis selbst erklären können. In der Prüfung stehen diese Werkzeuge nicht zur Verfügung.
-- Laptop / Tablet mit Tastatur stark zu empfehlen. Falls beides nicht vorhanden gerne mit Sitznachbar arbeiten.
+- Organisatorische Fragen klären
+- KI zuhause: erst selbst überlegen, Ergebnis erklären können; Klausur ohne KI
+- Laptop/Tablet mit Tastatur; ggf. zu zweit arbeiten
+
 
 ---
 
@@ -101,9 +103,10 @@ Note:
 - Mit `if` und `else` entscheiden und Bedingungen verknüpfen
 
 Note:
-- Der Schwerpunkt liegt auf Variablen und dem Lesen von Code.
-- Erst vorhersagen, dann ausführen, dann erklären: Dieses Muster heute immer wieder verwenden.
-- Der optionale Teil am Ende ist Material für verbleibende Zeit oder spätere Vertiefung.
+- Schwerpunkt: Variablen und Codeverständnis
+- Vorhersagen → ausführen → erklären
+- Optionaler Teil je nach Zeit/Lerntempo
+
 
 ---
 
@@ -122,11 +125,12 @@ Ein Programm führt konkrete Anweisungen aus, etwa für Berechnungen oder zur Au
 Eine genaue Schrittfolge zur Lösung einer Aufgabe heißt **Algorithmus**.
 
 Note:
-- Ein alltagsnahes Beispiel sammeln lassen, etwa wiederkehrende Rechnungen.
-- Der Computer errät unsere Absicht nicht. Wir müssen Daten und Schritte genau beschreiben.
-- Die Schritte sind eine Beschreibung in Alltagssprache, noch kein C#.
-- Gemeinsam für 20 Jahre durchspielen: 20 × 365 = 7300.
-- Die Rechnung ist eine Näherung: Schaltjahre und das genaue Geburtsdatum bleiben hier unberücksichtigt.
+- Alltagsbeispiel sammeln
+- Anforderungen: Eingaben, Regeln, erwartetes Ergebnis
+- Pseudocode: Lösungsidee vor C#-Schreibweise
+- 20 × 365 = 7300; Näherung ohne Schaltjahre/Geburtsdatum
+- Lauffähig ≠ richtige Aufgabe gelöst
+
 
 ---
 
@@ -147,9 +151,11 @@ Programmierung mit C#.
 Anweisungen werden hier **von oben nach unten** ausgeführt.
 
 Note:
-- Code und Ausgabe klar unterscheiden: Quelltext schreiben wir, die Ausgabe erzeugt das Programm.
-- Zeilen einzeln zeigen und die erwartete Ausgabe abfragen.
-- C# ist die Programmiersprache. Die Konsole ist der Bereich für Textausgaben und Texteingaben.
+- Quelltext vs. Ausgabe; zeilenweise vorhersagen
+- C# = Sprache; Konsole = Text-Ein-/Ausgabe
+- Syntax = Aufbau; Semantik = Bedeutung
+- Beispiele: fehlendes Anführungszeichen vs. falscher Rechenfaktor
+
 
 ---
 
@@ -167,26 +173,36 @@ Console.WriteLine("Hallo!");
 | `;` | Beendet die Anweisung |
 
 Note:
-- WriteLine ist eine Methode, die wir aufrufen. Ihre innere Umsetzung müssen wir noch nicht kennen.
-- Klammern und Anführungszeichen sind unterschiedliche Zeichen mit unterschiedlichen Aufgaben.
-- Die Anführungszeichen und das Semikolon erscheinen nicht in der Ausgabe.
-- Nicht behaupten, jede C#-Zeile brauche ein Semikolon: Später kommen Blöcke mit geschweiften Klammern.
+- Methode, Aufruf (), Argument "Hallo!"
+- Klammern vs. Anführungszeichen; Syntaxzeichen nicht in Ausgabe
+- WriteLine() ohne Argument → Leerzeile
+- Semikolon bei Anweisungen, nicht pauschal bei jeder Codezeile
+- Eigene Methoden später
+
 
 ---
 
 ## Praxis: Arbeitsumgebung
 
-[GitHub-Vorlage öffnen](https://github.com/Rearth/DHBW-Vorlesung-Codespace)
+GitHub-Vorlage öffnen:
+https://github.com/Rearth/DHBW-Vorlesung-Codespace
 
 ![QR-Code zur GitHub-Vorlage](https://github.com/Rearth/DHBW-Vorlesung-Codespace/blob/main/Material/Termin_1_Intro/Bilder/codespace_qr.png?raw=true)
 
 Codespace starten und den Editor öffnen.
 
+Alternativ:
+https://www.jdoodle.com/compile-c-sharp-online
+
 Note:
-- GitHub-Account und Start des Codespaces gemeinsam durchgehen, Ladezeit einplanen.
-- Editor, Dateiliste, Run-Button und Ausgabebereich zeigen. Die Studierenden führen keine Terminalbefehle aus.
-- Der Codespace enthält das .NET SDK zum Übersetzen und Ausführen von C#.
-- Kurze Demo: Ausführen, Ausgabe lesen und Position von Fehlermeldungen zeigen.
+- GitHub-Account, Codespace starten; Ladezeit
+- Editor: Quelltext, Hervorhebung, Vorschläge
+- Compiler: prüfen/übersetzen; Laufzeit: ausführen
+- C# = Sprachregeln; .NET = Bibliotheken/Laufzeit; SDK = Entwicklungswerkzeuge
+- Konsole: Programm-Ein-/Ausgabe; Terminal: auch Shell/Befehle
+- Dateiliste, Run, Eingabebereich, Ausgabe, Fehlermeldungen zeigen
+- Alternativen: JDoodle / lokale IDE + SDK; heute keine CLI
+
 
 ---
 
@@ -202,11 +218,11 @@ Das Template enthält bereits ein C#-Projekt.
 Verwenden Sie das vorhandene Projekt. Ersetzen Sie für ein neues Beispiel den bisherigen Übungscode in der Datei.
 
 Note:
-- Die konkrete Datei des Templates gemeinsam zeigen; im aktuellen Arbeitsstand heißt sie Termin_1.cs.
-- Vorher sicherstellen, dass das Template den einfachen Einstiegscode enthält und nicht die Lösungen späterer Termine.
-- Run-Button und Eingabebereich einmal live zeigen. Bei ReadLine muss die gewählte Run-Konfiguration interaktive Eingaben erlauben.
-- Kein neues Projekt anlegen, keine CLI-Befehle durch die Studierenden ausführen lassen.
-- Beispiele jeweils als vollständigen Dateiinhalt einsetzen, statt alle Beispiele untereinander anzuhängen.
+- Termin_1.cs zeigen; einfacher Einstiegscode vorbereiten
+- Top-Level-Statements: ohne eigene Klasse/Main
+- Vorhandenes Projekt, Run; interaktive Eingabe prüfen
+- Beispiele ersetzen statt anhängen; doppelte Deklarationen vermeiden
+
 
 ---
 
@@ -223,7 +239,10 @@ Note:
 **Tipps:** Eine Ausgabe lautet z. B. `Console.WriteLine("Hallo!");`. Achten Sie auf `"..."`, `(...)` und `;`.
 
 Note:
-- Übungsblock 1, etwa 3–5 Minuten. Bearbeiten, speichern, starten und Ausgabe zuordnen. Danach einen fehlenden Strichpunkt gemeinsam korrigieren.
+- Block 1 · 3–5 Min.
+- Ändern → speichern → Run → Ausgabe prüfen
+- Fehlendes Semikolon gemeinsam korrigieren
+
 
 ---
 
@@ -239,9 +258,10 @@ Die Zahl `20` steht hier für ein Alter. Bei einer Änderung müssen beide Vorko
 Eine Variable speichert einen Wert unter einem **Namen**, über den er wiederverwendet werden kann.
 
 Note:
-- Problem zuerst besprechen: Die Bedeutung der Zahl steht nicht im Code, und sie ist doppelt eingetragen.
-- Variablen ermöglichen, Werte einmal bereitzustellen und in mehreren Anweisungen zu verwenden.
-- Die nächste Folie ersetzt beide Vorkommen durch einen Namen.
+- Problem: unklare Bedeutung, doppelte Zahl
+- Wert einmal festlegen, mehrfach verwenden
+- Nächste Folie: Zahl durch Namen ersetzen
+
 
 ---
 
@@ -263,13 +283,13 @@ Console.WriteLine(alter);
 **Deklarieren:** Variable anlegen. **Initialisieren:** ersten Wert zuweisen.
 
 Note:
-- Bild eines beschrifteten Speicherfachs verwenden: Name auf dem Fach, aktueller Wert darin, Typ legt erlaubte Werte fest.
-- Dies ist ein vereinfachtes Modell für die heute verwendeten lokalen Variablen. Keine Speicheradressen, Stack/Heap oder Referenzsemantik einführen.
-- int steht für ganze Zahlen, etwa 0, 20 oder -3.
-- Die Variable selbst wird nicht ausgegeben; WriteLine liest ihren aktuellen Wert.
-- Diese Anweisung verbindet Deklaration und Initialisierung.
-- Grundform mündlich wiederholen: Typ Name gleich Wert Semikolon.
-- Wir geben Variablen heute direkt beim Anlegen einen Startwert.
+- Speicherfach: Beschriftung, Inhalt, erlaubter Typ; vereinfachtes Modell
+- Grundform: Typ Name = Wert; int: 0, 20, -3
+- WriteLine liest aktuellen Wert
+- Deklaration + Initialisierung; heute direkt mit Startwert
+- Getrennt: int alter; → alter = 20; erst danach lesbar; kein nutzbarer Standardwert 0
+- Neustart: neu initialisiert; keine automatische dauerhafte Speicherung
+
 
 ---
 
@@ -294,9 +314,11 @@ alter
 `alter` liest die Variable. `"alter"` ist ein wörtlicher Text. `20` ist eine Zahl.
 
 Note:
-- Erst vorhersagen lassen. Dies ist eine zentrale Unterscheidung für Anfänger.
-- Ein direkt im Code geschriebener Wert wie 20 oder "alter" heißt Literal.
-- Ohne Anführungszeichen sucht C# hier eine Variable mit diesem Namen.
+- Ausgabe vorhersagen
+- Literal = direkt geschriebener Wert
+- alter vs. "alter"; Name lesen vs. Text
+- 20 / "20" / '2'; true vs. "true"
+
 
 ---
 
@@ -323,8 +345,10 @@ punkte · int          kopie · —
 `punkte` wird als `int` angelegt und erhält den Startwert `10`.
 
 Note:
-- Die sechs Folien zeigen ein einziges Programm, keine sechs unabhängigen Programme. Die hervorgehobene Zeile ist die gerade ausgeführte Anweisung; der Speicher darunter zeigt den Zustand danach. Vor dem nächsten Folienwechsel den nächsten Zustand vorhersagen lassen.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- Ein Programm, sechs Schritte; Zustand jeweils nach markierter Zeile
+- Nächsten Zustand vorhersagen
+- Speicherfächer: vereinfachtes Modell
+
 
 ---
 
@@ -351,8 +375,9 @@ punkte · int          kopie · int
 Der aktuelle Wert von `punkte` wird in die neue Variable `kopie` übernommen.
 
 Note:
-- Vor dem Wechsel fragen: Welchen Wert bekommt kopie? Bei int wird der aktuelle Wert kopiert. Es entsteht keine dauerhafte Verbindung zwischen den Variablen.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- Wert von kopie vorhersagen
+- int-Wert kopiert; keine dauerhafte Verbindung
+
 
 ---
 
@@ -379,8 +404,9 @@ punkte · int          kopie · int
 `punkte` erhält `14`. Der Wert in `kopie` bleibt unverändert.
 
 Note:
-- Vor dem Wechsel fragen: Verändert sich kopie ebenfalls? Nein. Bei der Zuweisung steht kein Typ mehr dabei: Die Variable existiert bereits.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- kopie bleibt 10
+- Zuweisung ohne erneute Typangabe
+
 
 ---
 
@@ -407,8 +433,9 @@ punkte · int          kopie · int
 Rechts lesen und rechnen: `14 + 3 = 17`. Dann `17` in `punkte` speichern.
 
 Note:
-- Vor dem Wechsel die Rechnung abfragen. Das rechte punkte liest den bisherigen Wert 14; erst danach ersetzt die Zuweisung den linken Speicherinhalt durch 17. = ist eine Aktion, keine mathematische Gleichung.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- Erst rechts lesen/rechnen: 14 + 3; dann speichern
+- = als Aktion, keine mathematische Gleichung
+
 
 ---
 
@@ -435,8 +462,10 @@ punkte · int          kopie · int
 Rechts beide Werte lesen: `17 + 10 = 27`. Dann `27` in `kopie` speichern.
 
 Note:
-- Vor dem Wechsel beide gelesenen Werte nennen lassen. Der bisherige Wert von kopie geht in die Rechnung ein, bevor er ersetzt wird. Die Variable punkte wird dabei nur gelesen.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- Alte Werte: 17 + 10 → 27; punkte nur gelesen
+- Ausdruck liefert Wert; Zuweisung speichert
+- Keine rückwirkenden Änderungen
+
 
 ---
 
@@ -463,8 +492,10 @@ punkte · int          kopie · int
 Die Ausgabe liest `kopie`: **27**. Beide Speicherwerte bleiben unverändert.
 
 Note:
-- Vor dem Wechsel die Ausgabe vorhersagen lassen. Danach das gesamte Programm im vorbereiteten Projekt über Run ausführen. Ergebnis 27. Optional zurück zur ersten Demo-Folie und mit anderem Startwert gedanklich wiederholen.
-- Die Fächer sind ein vereinfachtes Modell lokaler int-Variablen; kein exaktes Speicherlayout.
+- Ausgabe vorhersagen: 27; Speicher unverändert
+- Ganzes Programm über Run prüfen
+- Optional: anderer Startwert
+
 
 ---
 
@@ -484,15 +515,18 @@ Note:
 | `string` | — | Variabel | Text, z. B. `"Inhalt"` |
 
 Note:
-- Die vollständige ursprüngliche Tabelle wieder aufgreifen; string und decimal ergänzen, weil Text bereits verwendet wird und Dezimalwerte eingeordnet werden sollen.
-- Zeilen direkt erklären: byte/short/int/long speichern ganze Zahlen mit unterschiedlichen Grenzen. Vorzeichen bedeutet, dass auch negative Zahlen möglich sind; byte ist vorzeichenlos.
-- 8 Bit sind ein Byte. Mit mehr Bits lassen sich mehr unterschiedliche Werte darstellen. Die Grenzen dienen als Nachschlageinformation, nicht als Auswendiglernziel. int reicht von −2 147 483 648 bis 2 147 483 647.
-- char speichert eine UTF-16-Codeeinheit; ein sichtbares Unicode-Zeichen kann mehr als eine solche Einheit benötigen. Für Texte string verwenden. string hat keine feste Gesamtgröße.
-- float und double sind binäre Gleitkommazahlen: großer Bereich, aber begrenzte Genauigkeit. 6–9 bzw. 15–17 meint signifikante Ziffern, nicht feste Nachkommastellen. Die genannten Grenzen sind Näherungen für endliche Werte.
-- decimal eignet sich für Dezimalrechnungen wie Geldbeträge; auch hier bestehen Grenzen und Rundungsmöglichkeiten. Die Einführung arbeitet überwiegend mit int und double.
-- bool hat nur zwei logische Werte, auch wenn sizeof(bool) ein Byte ergibt. Größen beschreiben Werte, nicht den gesamten Verwaltungsaufwand einer Variable.
-- Weitere Ganzzahlvarianten: sbyte (−128 … 127), ushort (0 … 2¹⁶−1), uint (0 … 2³²−1), ulong (0 … 2⁶⁴−1). Bei den u-Varianten entfällt das Vorzeichen. Nur kurz einordnen.
+- Ganzzahltypen: Vorzeichen und Grenzen; 8 Bit = 1 Byte
+- Bereiche nachschlagen, nicht auswendig; int: −2 147 483 648 … 2 147 483 647
+- char: UTF-16-Codeeinheit ≠ immer sichtbares Zeichen; string: variable Größe
+- float/double: binär, begrenzte signifikante Ziffern
+- Rundung: 1/3 dezimal, manche Dezimalbrüche binär nicht endlich
+- decimal: Geld/Dezimalrechnung; ebenfalls begrenzt
+- Wertebereich ≠ Genauigkeit ≠ Ausgabeformat
+- Überlauf: byte 255/256; Überlaufprüfung später
+- bool: zwei Werte; Größen ohne Verwaltungsaufwand
+- Weitere Ganzzahltypen: sbyte, ushort, uint, ulong
 - Referenzen: [Ganzzahltypen](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types), [Gleitkomma- und Dezimaltypen](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types), [sizeof](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/sizeof).
+
 
 ---
 
@@ -509,12 +543,13 @@ Die Schreibweise eines direkt angegebenen Werts (**Literal**) bestimmt seinen Ty
 Im C#-Code ist das Dezimaltrennzeichen immer ein **Punkt**.
 
 Note:
-- Die Literale einzeln mit der Tabelle verbinden. Ein Typ muss nicht erst durch eine Variablendeklaration entstehen: Auch Console.WriteLine(123) erhält einen int-Wert.
-- Bei var wird der Variablentyp aus dem Startwert abgeleitet. Das Schlüsselwort hier nur einordnen; eine eigene optionale Folie folgt später.
-- Ein explizit deklarierter Zieltyp kann zulässige Umwandlungen erlauben, etwa double wert = 123;. Das int-Literal wird dann in double umgewandelt.
-- Sehr große Ganzzahlliterale können ohne Suffix einen anderen Ganzzahltyp erhalten; für unsere kleinen Werte ist int die Standardwahl.
-- Ein char-Literal enthält genau eine UTF-16-Codeeinheit. Einfache Beispiele wie 'a' verwenden.
-- Die Ausgabe kann abhängig von der Kultur ein Komma verwenden. 1_000_000 ist eine lesbare Schreibweise derselben Zahl wie 1000000.
+- Literale haben eigenen Typ, auch ohne Variable
+- Kleine Ganzzahlliterale: int; sehr große ggf. anderer Typ
+- char: eine Codeeinheit; Beispiel 'a'
+- Typ nach Bedeutung: Anzahl / Temperatur / Raum / Postleitzahl mit führenden Nullen
+- Quellcode: Punkt; Ausgabe kulturabhängig
+- 1_000_000 = 1000000; var später
+
 
 ---
 
@@ -532,10 +567,11 @@ Ein **Suffix** legt den Typ eines Zahlenliterals gezielt fest:
 Ohne Suffix hat `123.45` bereits den Typ `double`.
 
 Note:
-- L/l, F/f, D/d und M/m sind möglich. Große Buchstaben verwenden; ein kleines l ist leicht mit 1 zu verwechseln.
-- float temperatur = 36.6F; funktioniert, float temperatur = 36.6; nicht: Das Literal ohne Suffix ist ein double und wird nicht automatisch in float umgewandelt.
-- L legt den Literaltyp fest, erweitert aber nicht beliebig den Wertebereich.
-- M für decimal ergänzt die wiederhergestellten Suffixe L/F/D.
+- Suffixe groß/klein möglich; großes L lesbarer
+- 36.6F für float; 36.6 bereits double
+- L bestimmt Literaltyp, keine beliebige Bereichserweiterung
+- M für decimal; D optional
+
 
 ---
 
@@ -556,9 +592,12 @@ anzahl = 4.5;        // Zahl mit Nachkommastelle
 Der **Compiler** prüft den Code vor der Ausführung und meldet solche Fehler.
 
 Note:
-- Das zweite Codefeld ist absichtlich ungültig und kein zusätzliches vollständiges Programm.
-- Compiler kurz als Übersetzer mit Prüfungen erklären, keine IL/JIT-Details.
-- Einmal einen Typfehler live erzeugen, Fehlermeldung lesen und anschließend korrigieren.
+- Zweites Codefeld absichtlich ungültig
+- Typfehler live erzeugen, Meldung lesen, korrigieren
+- Implizite Konvertierung: double wert = 123;
+- double → int: möglicher Informationsverlust; keine automatische Zuweisung
+- Text → Zahl: eigener Umwandlungsschritt
+
 
 ---
 
@@ -576,9 +615,13 @@ int alterInTagen = alterInJahren * 365;
 - `//` beginnt einen Kommentar bis zum Zeilenende
 
 Note:
-- Keine Leerzeichen in Variablennamen; Schlüsselwörter wie int sind keine erlaubten normalen Variablennamen.
-- Deutsche Namen dienen hier dem Verständnis. In vielen Projekten werden englische Namen verwendet.
-- Kommentare werden nicht ausgeführt. Der Kommentar erklärt hier die bewusste Vereinfachung.
+- camelCase = Konvention; Groß-/Kleinschreibung relevant
+- Keine Leerzeichen/normalen Schlüsselwörter; raum2 ✓, 2raum ✗
+- Deutsche Namen zum Einstieg; oft Englisch in Projekten
+- Einheiten im Namen: dauerInMinuten / dauerInSekunden
+- // und /* ... */; Kommentare nicht ausgeführt
+- Absicht/Vereinfachung erklären; bei Änderungen mitpflegen
+
 
 ---
 
@@ -595,9 +638,12 @@ Note:
 Multiplikation und Division werden vor Addition und Subtraktion ausgewertet. Klammern legen die Reihenfolge fest: `(2 + 3) * 4` ergibt `20`.
 
 Note:
-- Bei / die nächste Folie direkt anschließen: Das Ergebnis hängt von den Typen der beteiligten Werte ab.
-- % am Beispiel erklären: 10 enthält dreimal die 3; 1 bleibt übrig.
-- Rest später für die Gerade/Ungerade-Aufgabe wieder aufgreifen.
+- %: Rest, keine Prozentrechnung; 20 % → Faktor 0.20
+- Rangfolge: *, /, % vor +, −
+- 20 / 5 * 2 → 8; 20 / (5 * 2) → 2
+- Zwischenschritte/Einheiten: 120 Min. → 2 Std.; 150 km / 2 Std. → 75 km/h
+- Divisionstypen nächste Folie; Rest später für gerade/ungerade
+
 
 ---
 
@@ -616,10 +662,12 @@ double ergebnis = 5 / 2;      // Speichert 2, nicht 2.5
 ```
 
 Note:
-- Der Typ links verändert die bereits rechts ausgeführte Ganzzahldivision nicht.
-- Für double ergebnis = 5.0 / 2; wird 2.5 berechnet.
-- Abschneiden bedeutet Richtung null, nicht allgemeines Abrunden: -5 / 2 ergibt -2. Nur bei Nachfrage vertiefen.
-- Ob die Ausgabe Punkt oder Komma verwendet, hängt von der Kultur der Laufzeitumgebung ab; im Quellcode steht immer ein Punkt.
+- Zieltyp links ändert Rechnung rechts nicht
+- 5 / 2 → 2; 5.0 / 2 → 2.5
+- Abschneiden Richtung null: −5 / 2 → −2
+- Quellcode Punkt; Ausgabe kulturabhängig
+- Ganzzahldivision durch Laufzeitwert 0 → Fehler; Eingabeprüfung später
+
 
 ---
 
@@ -636,7 +684,10 @@ Note:
 **Tipps:** Nutzen Sie die Typentabelle. Für `float` ist das Suffix `F` erforderlich. Beim Ändern entfällt der Typ vor dem Namen.
 
 Note:
-- Übungsblock 2, etwa 5 Minuten. Erwartet: int, string, char, float, bool. Zusatz bei verbleibender Zeit: long und decimal mit passendem Suffix.
+- Block 2 · 5 Min.
+- Erwartet: int, string, char, float, bool
+- Optional: long/decimal mit Suffix
+
 
 ---
 
@@ -655,7 +706,53 @@ Note:
 **Tipps:** Alle Schritte in einem Programmlauf. Nutzen Sie `anzahl = anzahl + 2;`. Erwartete Ausgaben: `7.5`, `7.5`, `12.5` (ggf. mit Komma).
 
 Note:
-- Übungsblock 2, etwa 5–7 Minuten. Alle Schritte innerhalb eines Programmlaufs. Der gespeicherte Gesamtpreis ändert sich erst durch die erneute Zuweisung. In Schritt 5 die bestehende Variable verwenden, nicht erneut deklarieren. double dient der bekannten Rechensyntax; für echte Geldberechnungen decimal einordnen.
+- Block 2 · 5–7 Min.; ein Programmlauf
+- Gesamtpreis: gespeicherter Wert, keine aktive Tabellenformel
+- Neu rechnen/zuweisen, nicht erneut deklarieren
+- double für Übung; decimal für echte Geldrechnung
+
+
+---
+
+## Aufgabe 4: Werte kopieren und ändern
+
+**Ziel:** Werte zwischen Variablen übertragen und unabhängig ändern.
+
+**Anforderungen:**
+
+1. Legen Sie `punkte` als `int` mit dem Wert `12` an. Legen Sie `kopie` als `int` an und weisen Sie ihr den Wert von `punkte` zu.
+2. Erhöhen Sie nur `punkte` um `5`. Geben Sie beide Variablen einzeln aus.
+3. Weisen Sie `kopie` den aktuellen Wert von `punkte` zu. Geben Sie beide erneut aus.
+
+**Tipps:** Bei einer erneuten Zuweisung entfällt der Typ. Erwartete Ausgaben: `17`, `12`, `17`, `17`.
+
+Note:
+- Block 2 · 4–5 Min.; ein Programmlauf
+- Kopierte int-Werte unabhängig
+- Optional: Wertetausch; ohne Zwischenspeicher zweimal 8
+- Mit zwischenwert: alten Wert retten; Zustandstabelle
+
+
+---
+
+## Aufgabe 5: Artikel auf Kartons verteilen
+
+**Ziel:** Ganzzahldivision und Restberechnung verwenden.
+
+**Anforderungen:**
+
+1. Legen Sie `artikel` mit dem Wert `23` und `proKarton` mit dem Wert `5` an, jeweils als `int`.
+2. Berechnen Sie mit `/` die Anzahl vollständig gefüllter Kartons und mit `%` die übrigen Artikel. Speichern und geben Sie beide Ergebnisse aus.
+3. Ändern Sie `artikel` auf `25`. Berechnen und geben Sie beide Ergebnisse erneut aus.
+
+**Tipps:** Zwei `int`-Werte ergeben bei `/` eine Ganzzahldivision. Erwartete Ausgaben: `4`, `3`, `5`, `0`.
+
+Note:
+- Block 2 · 4–5 Min.; volle Kartons ≠ insgesamt benötigte
+- Kontrolle: 23 = 4 × 5 + 3
+- Tests: Rest / restlos / null Artikel; vorher ausrechnen
+- Ggf. Block-2-Aufgaben zuhause
+
 
 ---
 
@@ -678,9 +775,12 @@ Mia
 `ReadLine()` wartet auf die Eingabe; danach läuft das Programm weiter.
 
 Note:
-- Erst live ausführen: Das Programm wartet, statt bereits alles auszugeben.
-- ReadLine liefert Text, WriteLine erzeugt Ausgabe. Beide Aufrufe nicht verwechseln.
-- Im Konsolenablauf kennzeichnet > eine Eingabe; das Zeichen gehört nicht zur tatsächlichen Ein- oder Ausgabe. Mia wird mit Enter bestätigt und anschließend durch WriteLine(name) ausgegeben.
+- Live: Warten bis Enter
+- ReadLine: Eingabe/Text; WriteLine: Ausgabe
+- > nur Eingabemarkierung; nicht mit eingeben
+- Nullable-Warnung ggf. einordnen: null am Eingabestromende
+- Heute vorhandene Textzeile; Sonderfälle später
+
 
 ---
 
@@ -704,10 +804,12 @@ Wie alt sind Sie in Jahren?
 `Convert.ToInt32(...)` wandelt den Text `"20"` in die Zahl `20` um.
 
 Note:
-- Namen unterscheiden bewusst Rohtext und Zahl. Erst nach der Umwandlung arithmetisch rechnen.
-- Für dieses Beispiel gültige ganze Zahlen eingeben, etwa 20. Im Konsolenablauf ist 20 die Eingabe und 21 die berechnete Ausgabe.
-- Bei Eingaben wie zwanzig, leerem Text oder zu großen Zahlen kann die Umwandlung zur Laufzeit fehlschlagen. Einmal benennen; robuste Eingabeprüfung folgt später.
-- Keine implizite automatische Umwandlung von string nach int suggerieren.
+- Rohtext vs. Zahl; 20 eingeben → 21 ausgeben
+- Keine automatische string→int-Umwandlung
+- Ungültig: "zwanzig", leer, außerhalb Wertebereich; Prüfung später
+- Konkatenation: "20" + "1" → "201"; Addition: 20 + 1 → 21
+- Lesbar als Zahl ≠ fachlich zulässig; −5 als Alter
+
 
 ---
 
@@ -722,9 +824,13 @@ Note:
 **Kleine Änderung → speichern → starten → Ergebnis prüfen**
 
 Note:
-- Compilerfehler, Laufzeitfehler und logische Fehler anhand der bisherigen Beispiele unterscheiden.
-- Zwischenwerte vorübergehend mit WriteLine ausgeben, um die Rechnung zu verfolgen.
-- Keine vollständige Fehlermeldungsliste verlangen. Erste Ursache beheben, dann erneut starten.
+- Compiler: Semikolon/Typ; Laufzeit: "zwanzig"; Logik: alter Gesamtpreis
+- Erste Ursache beheben; Folgemeldungen möglich
+- Debugging: kleinsten verdächtigen Schritt, Zwischenwerte mit WriteLine
+- Später: Haltepunkte/Variablenanzeige
+- Testfall: Eingabe + unabhängig erwartetes Ergebnis; Grenzen 17/18/19
+- Warnung vs. Fehler; lauffähig ≠ korrekt
+
 
 ---
 
@@ -745,9 +851,11 @@ Console.WriteLine(istVolljaehrig);
 **`=` weist zu. `==` vergleicht.**
 
 Note:
-- alter >= 18 ist ein Ausdruck mit dem Typ bool und hier dem Wert true.
-- Console.WriteLine zeigt bool-Werte als True bzw. False; C#-Schlüsselwörter im Code bleiben true und false.
-- Auch alter == 18 und alter != 18 mündlich auswerten lassen.
+- Vergleich liest Werte, verändert sie nicht
+- Code true/false; Ausgabe True/False
+- == 18 und != 18 auswerten lassen
+- Gespeicherter bool bleibt: Alter 17→18; erst neu vergleichen → true
+
 
 ---
 
@@ -770,8 +878,10 @@ Die Bedingung ergibt einen `bool`-Wert: `true` oder `false`.
 Pro Durchlauf wird **genau einer** der beiden Zweige ausgeführt.
 
 Note:
-- Zuerst ohne Code mit 20 und 16 Jahren durchgehen. Eine Entscheidung prüft den aktuellen Wert, sie wartet nicht darauf, dass die Bedingung irgendwann wahr wird.
+- Ohne Code mit 20/16 durchgehen
+- Aktuellen Wert prüfen; kein Warten auf spätere Änderung
 - Referenz: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
+
 
 ---
 
@@ -791,10 +901,12 @@ Console.WriteLine("Prüfung beendet.");
 ```
 
 Note:
-- Mit Weiter die Syntaxteile markieren: Bedingung, if-Block, else-Block, gemeinsame Fortsetzung. Die Highlights erklären den Aufbau, nicht die Ausführungsreihenfolge eines einzelnen Durchlaufs.
-- Runde Klammern enthalten eine bool-Bedingung. Geschweifte Klammern begrenzen jeweils den zugehörigen Block und müssen paarweise gesetzt werden.
-- Bei true läuft der if-Block, bei false der else-Block. Die letzte Ausgabe folgt in beiden Fällen.
-- Die nächste Folie enthält die Erläuterungen als Nachschlagefolie.
+- Highlights: Syntaxteile, nicht Ablauf eines Programmlaufs
+- () Bedingung; {} Block; Klammerpaare
+- if (istVolljaehrig) direkt; Zahl 1 kein bool-Ersatz
+- true → if; false → else; danach gemeinsame Ausgabe
+- Nächste Folie zum Nachlesen
+
 
 ---
 
@@ -807,8 +919,10 @@ Note:
 - Nach dem gewählten Block geht es mit der gemeinsamen Fortsetzung weiter.
 
 Note:
-- Die Erklärungen können bereits auf der Codefolie mündlich gegeben werden. Diese Folie dient zum Nachlesen und kann beim Vortrag zügig weitergeschaltet werden.
-- Bei alter=20 wird Volljährig ausgegeben, bei alter=16 Minderjährig. Prüfung beendet. folgt in beiden Fällen.
+- Nachschlagefolie; zügig weiter
+- 20 → Volljährig; 16 → Minderjährig
+- „Prüfung beendet.“ in beiden Fällen
+
 
 ---
 
@@ -830,13 +944,16 @@ Console.WriteLine("Diese Ausgabe folgt immer.");
 - `else` ist optional: Bei `false` wird der `if`-Block übersprungen.
 
 Note:
-- Mit alter=16 beide Ausgaben im Block überspringen und die letzte ausführen. if (...) mit anschließendem Semikolon hätte einen leeren Anweisungskörper und wäre ein typischer Logikfehler.
-- Wir verwenden auch bei einer einzelnen Anweisung immer geschweifte Klammern.
-- In einem Block deklarierte lokale Variablen gelten nur in diesem Block und seinen inneren Blöcken. Benötigt man eine Variable nach if/else, legt man sie vorher an.
+- Mit 16: Block übersprungen, letzte Ausgabe bleibt
+- if (...); → leerer Anweisungskörper
+- Immer {}; Einrückung allein ohne Wirkung
+- Scope: lokale Variable nur im Block/inneren Blöcken
+- Weiterverwendung: ticketpreis vorher anlegen; innen ändern, danach ausgeben
+
 
 ---
 
-## Entscheidungs-Demo: 20 Jahre · Bedingung prüfen
+## Entscheidungs-Demo
 
 ```csharp [1|2]
 int alter = 20;
@@ -856,11 +973,14 @@ Console.WriteLine("Prüfung beendet.");
 **Bisher wurde noch nichts ausgegeben.**
 
 Note:
-- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+- Highlights schrittweise; nächsten Schritt vorhersagen
+- Ausgabe: Stand nach markierten Schritten
+- 20 und 16: getrennte Programmläufe
+
 
 ---
 
-## Entscheidungs-Demo: 20 Jahre · Block ausführen und weiter
+## Entscheidungs-Demo
 
 ```csharp [4|10]
 int alter = 20;
@@ -885,11 +1005,14 @@ Prüfung beendet.
 ```
 
 Note:
-- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+- Highlights schrittweise; nächsten Schritt vorhersagen
+- Ausgabe: Stand nach markierten Schritten
+- 20 und 16: getrennte Programmläufe
+
 
 ---
 
-## Entscheidungs-Demo: 16 Jahre · Bedingung prüfen
+## Entscheidungs-Demo
 
 ```csharp [1|2]
 int alter = 16;
@@ -909,11 +1032,14 @@ Neuer Programmlauf mit `16`: `16 >= 18` ergibt `false`.
 **Bisher wurde noch nichts ausgegeben.**
 
 Note:
-- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+- Highlights schrittweise; nächsten Schritt vorhersagen
+- Ausgabe: Stand nach markierten Schritten
+- 20 und 16: getrennte Programmläufe
+
 
 ---
 
-## Entscheidungs-Demo: 16 Jahre · Block ausführen und weiter
+## Entscheidungs-Demo
 
 ```csharp [8|10]
 int alter = 16;
@@ -938,7 +1064,10 @@ Prüfung beendet.
 ```
 
 Note:
-- Die Markierungen mit Weiter nacheinander zeigen. Ausgabe unten zeigt den Stand nach beiden markierten Schritten. Vor dem Weiterschalten den nächsten Schritt vorhersagen lassen. Die beiden Alterswerte gehören zu getrennten Programmläufen.
+- Highlights schrittweise; nächsten Schritt vorhersagen
+- Ausgabe: Stand nach markierten Schritten
+- 20 und 16: getrennte Programmläufe
+
 
 ---
 
@@ -957,9 +1086,13 @@ Note:
 - `!true` ergibt `false`; `!false` ergibt `true`.
 
 Note:
-- Oder ist einschließlich: Auch beide wahr ist erlaubt. ! steht vor genau dem Wert oder geklammerten Ausdruck, den es umkehrt.
-- && und || prüfen rechts nur, wenn es für das Ergebnis nötig ist. Keine Seiteneffekte in heutigen Bedingungen.
+- Oder einschließlich: auch beide wahr
+- Wahrheitstabelle: vier Kombinationen
+- ! vor Wert/geklammerter Aussage
+- Kurzschluss: && links false / || links true → rechts entfällt
+- Heute ohne Seiteneffekte
 - Referenz: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators
+
 
 ---
 
@@ -984,29 +1117,16 @@ else
 Die äußeren `(...)` gehören zu `if`; die inneren gruppieren Teilbedingungen.
 
 Note:
-- Die Markierung zeigt die zusammengesetzte Bedingung. Ausgabe hier: Zutritt erlaubt. Danach fragen: Welche Änderung führt zum else-Block?
-- Zuerst die Klammern auswerten. Ohne Klammern bindet ! stärker als &&, && stärker als ||. Zur Lesbarkeit Bereiche ausdrücklich klammern.
-- alter >= 18 && <= 65 ist kein gültiges C#: Jeden Vergleich vollständig schreiben, etwa (alter >= 18) && (alter <= 65).
+- Ausgabe: Zutritt erlaubt; Änderung für else suchen
+- Rangfolge: ! vor && vor ||; lesbar klammern
+- Altersbereich: jeden Vergleich vollständig schreiben
+- !(Ticket || Gästeliste): weder noch; Unterschied zu !Ticket || Gästeliste
+- Regel erst als Satz; Alternativen beide/keine testen
+
 
 ---
 
-## Aufgabe 4: Vor- und Nachname einlesen
-
-**Ziel:** Texte in zwei Variablen speichern und verwenden.
-
-**Anforderungen:**
-
-1. Fragen Sie nacheinander nach Vor- und Nachname und speichern Sie beide Eingaben in eigenen `string`-Variablen.
-2. Geben Sie beide Werte auf getrennten Zeilen aus.
-
-**Tipps:** Nutzen Sie `Console.ReadLine()` zum Einlesen und `Console.WriteLine(...)` zum Ausgeben.
-
-Note:
-- Übungsblock 3. Aufgaben 4 und 5 zusammen etwa 10–12 Minuten. Gültige Eingaben voraussetzen. Text und Werte dürfen getrennt ausgegeben werden.
-
----
-
-## Aufgabe 5: Alter in Tagen berechnen
+## Aufgabe 6: Alter in Tagen berechnen
 
 **Ziel:** Eine Eingabe umwandeln, rechnen und mit `if`/`else` entscheiden.
 
@@ -1019,11 +1139,14 @@ Note:
 **Tipps:** Testen Sie die Grenze: 17 → 6205 Tage / minderjährig; 18 → 6570 Tage / volljährig; 20 → 7300 Tage / volljährig.
 
 Note:
-- Übungsblock 3. Die Rechnung ignoriert Schaltjahre und das genaue Geburtsdatum. Bedingung und beide Blöcke erklären lassen.
+- Block 3; Näherung ohne Schaltjahre/Geburtsdatum
+- EVA: Text → int → Tageszahl → Altersprüfung → Ausgabe
+- Beide Zweige und Grenze 18 erklären/testen
+
 
 ---
 
-## Aufgabe 6: Gerade oder ungerade?
+## Aufgabe 7: Gerade oder ungerade?
 
 **Ziel:** Restberechnung und Vergleich als Bedingung verwenden.
 
@@ -1036,11 +1159,13 @@ Note:
 **Tipps:** `zahl % 2 == 0` prüft, ob kein Rest bleibt. Testfälle: `8` → gerade, `7` → ungerade, `0` → gerade.
 
 Note:
-- Übungsblock 3, etwa 5–8 Minuten. Erst den Ablauf beschreiben lassen. Zusatz: negative Zahlen testen.
+- Block 3 · 5–8 Min.; Ablauf zuerst beschreiben
+- Zusatz: negative Zahlen
+
 
 ---
 
-## Aufgabe 7: Zutritt prüfen
+## Aufgabe 8: Zutritt prüfen
 
 **Ziel:** Vergleiche und logische Operatoren in einer Entscheidung kombinieren.
 
@@ -1053,7 +1178,9 @@ Note:
 **Tipps:** Gruppieren Sie die Oder-Bedingung mit Klammern. Ergänzen Sie mit `!hatTicket` eine Ausgabe darüber, ob das Ticket fehlt.
 
 Note:
-- Übungsblock 3, etwa 5 Minuten. Bei wenig Zeit Aufgabe 6 oder 7 zuhause fertigstellen. Keine bool-Eingabekonvertierung verlangen.
+- Block 3 · 5 Min.; feste bool-Werte
+- Ggf. Aufgabe 7/8 zuhause
+
 
 ---
 
@@ -1068,9 +1195,10 @@ Note:
 - `&&`, `||` und `!` verknüpfen oder verneinen Bedingungen.
 
 Note:
-- Hier kann der Pflichtteil enden. Keine Schleifen oder weiterführenden Themen als bereits gelernt aufführen.
-- Für zuhause: Aufgaben 2–7 erneut ohne Vorlage bearbeiten und jede Zeile erklären.
-- Optionales Material abhängig vom Lerntempo auswählen. Nicht alle Zusatzaufgaben müssen heute gelöst werden.
+- Möglicher Abschluss des Pflichtteils
+- Keine Schleifen voraussetzen
+- Vertiefung nach Lerntempo; nicht alle Zusatzaufgaben nötig
+
 
 ---
 
@@ -1079,15 +1207,18 @@ Note:
 Ergänzende Themen und Aufgaben:
 
 - Text und Werte gemeinsam ausgeben
-- Dezimaleingaben und Aufgabe 8
+- Dezimaleingaben und Aufgabe 9
 - `var` und kürzere Zuweisungen
-- Mehr als zwei Fälle und Aufgabe 9
-- `switch` und Aufgaben 10–11
-- Zusatzaufgaben 12–14
+- Mehr als zwei Fälle und Aufgabe 10
+- Zusatzaufgaben 11–12
 
 Note:
-- Deutliche Grenze zum Kernteil. Bei Bedarf einzelne Folien auswählen.
-- Das Ziel bleibt: Code verstehen und den Ablauf erklären können.
+- Klare Grenze zum Kernteil; einzelne Themen auswählen
+- Optional Cast: (double)strecke / dauer vs. (double)(strecke / dauer)
+- Bei 5/2: 2.5 vs. 2; ursprüngliche Variable unverändert
+- (int)2.9 → 2; Informationsverlust/Wertebereich
+- Text lesen mit Convert, nicht numerischem Cast
+
 
 ---
 
@@ -1109,10 +1240,11 @@ Mia ist 20 Jahre alt.
 `$"..."` erlaubt, Werte mit `{...}` in einen Text einzusetzen.
 
 Note:
-- Der Begriff ist String-Interpolation. Das Dollarzeichen steht vor dem öffnenden Anführungszeichen.
-- Die geschweiften Klammern markieren hier einzusetzende Werte und werden nicht mit ausgegeben.
-- Ohne Dollarzeichen würden die Klammern und Namen wörtlich im Text erscheinen.
-- Formatangaben wie :0.00 erst im optionalen Teil besprechen.
+- String-Interpolation: $ vor Anführungszeichen
+- {...} hier Platzhalter, kein Codeblock
+- Ohne $: Namen/Klammern wörtlich
+- Formatierung :0.00 anschließend
+
 
 ---
 
@@ -1137,14 +1269,16 @@ Ergebnis: 10.80 US-Dollar
 `Convert.ToDouble(...)` wandelt Text in eine Zahl um; `:0.00` formatiert die Ausgabe.
 
 Note:
-- Anders als Dezimalzahlen im Quellcode hängt das akzeptierte Eingabeformat von der Kultur der Laufzeitumgebung ab: etwa 10.50 oder 10,50. Vor der Übung ein gültiges Format live zeigen.
-- Formatierung betrifft die Ausgabe, nicht den gespeicherten Wert. Der Konsolenablauf zeigt eine Umgebung mit Dezimalpunkt; die Ausgabe kann auch 10,80 lauten.
-- 1.08 ist ein frei gewählter Übungskurs, kein aktueller Wechselkurs.
-- Wie bei int setzen wir vorerst gültige Eingaben voraus. TryParse und Kultursteuerung später vertiefen.
+- Eingabeformat kulturabhängig; gültiges Beispiel live zeigen
+- 10.8 → 10.80/10,80; Darstellung ≠ gespeicherter Wert/Genauigkeit
+- 1.08 = fester Übungskurs
+- Gültige Eingaben; TryParse/Kultursteuerung später
+- double für Übung; decimal für echte Geldrechnung
+
 
 ---
 
-## Aufgabe 8: Währungsrechner
+## Aufgabe 9: Währungsrechner
 
 *Optionale Vertiefung*
 
@@ -1159,7 +1293,9 @@ Note:
 **Tipps:** Verwenden Sie `Convert.ToDouble(...)` und z. B. `{dollar:0.00}` in einem interpolierten Text. 10 Euro ergeben 10.80 US-Dollar.
 
 Note:
-- Optional. Der Kurs ist frei gewählt. Eingabeformat und Dezimaltrennzeichen hängen von der Laufzeitkultur ab.
+- Optional; frei gewählter Kurs
+- Eingabe-/Ausgabeformat kulturabhängig
+
 
 ---
 
@@ -1176,9 +1312,10 @@ Der Compiler bestimmt den Typ aus dem Startwert.
 Auch mit `var` bleibt der Typ fest: `alter` kann danach keinen Text speichern.
 
 Note:
-- var ist eine alternative Schreibweise für lokale Variablendeklarationen mit Startwert, kein zusätzlicher Datentyp.
-- Zu Beginn sind explizite Typen hilfreich, weil sie die Struktur sichtbar machen.
-- var alter; ohne Startwert funktioniert nicht, weil der Typ nicht abgeleitet werden kann.
+- Typ aus Startwert, danach fest; kein neuer Datentyp
+- var alter; ohne Startwert ungültig
+- Explizite Typen zum Einstieg lesbarer
+
 
 ---
 
@@ -1195,9 +1332,12 @@ punkte++;      // Erhöht punkte um 1
 Danach enthält `punkte` den Wert `14`.
 
 Note:
-- Nur zeigen, wenn die lange Form der Zuweisung verstanden wurde.
-- ++ ausschließlich als eigene Anweisung verwenden. Präfix/Postfix innerhalb anderer Ausdrücke heute auslassen.
-- *= und /= existieren ebenfalls, müssen aber nicht einzeln eingeübt werden.
+- Erst lange Zuweisung verstehen
+- Werte: 10 → 15 → 13 → 14
+- ++ nur als eigene Anweisung; Präfix/Postfix später
+- *= und /= erwähnen
+- Andere gespeicherte Ergebnisse bleiben unverändert
+
 
 ---
 
@@ -1225,13 +1365,16 @@ Die erste zutreffende Bedingung bestimmt den ausgeführten Block.
 Das abschließende `else` fängt die übrigen Fälle ab.
 
 Note:
-- Bei 16: erste Bedingung false, zweite true, daher Ticket: 5 Euro.
-- Die zweite Bedingung wird nur geprüft, wenn die erste falsch war. Hier ist also bereits bekannt, dass alter mindestens 6 ist.
-- Reihenfolge ist entscheidend. Testwerte an Grenzen: 5, 6, 17 und 18.
+- 16: erste false, zweite true → 5 Euro
+- Zweiter Fall: mindestens 6 bereits bekannt
+- Grenzen: 5/6/17/18; Reihenfolge!
+- Zwei einzelne if: bei 4 beide wahr; Kette: erster passender Fall
+- Falsche Reihenfolge: <18 vor <6
+
 
 ---
 
-## Aufgabe 9: Ticketpreis ermitteln
+## Aufgabe 10: Ticketpreis ermitteln
 
 *Optionale Vertiefung*
 
@@ -1246,81 +1389,13 @@ Note:
 **Tipps:** Prüfen Sie die Altersgrenzen in aufsteigender Reihenfolge. Testen Sie `5`, `6`, `17`, `18`, `64` und `65`.
 
 Note:
-- Optional. Bei aufsteigenden Grenzen braucht man keine logischen Operatoren. Zusatz: negative Altersangaben ablehnen.
+- Optional; Grenzen aufsteigend → ohne && möglich
+- Zusatz: negatives Alter ablehnen
+
 
 ---
 
-## Optional: Fallunterscheidung mit `switch`
-
-```csharp
-int note = 2;
-
-switch (note)
-{
-    case 1:
-        Console.WriteLine("Sehr gut");
-        break;
-    case 2:
-        Console.WriteLine("Gut");
-        break;
-    default:
-        Console.WriteLine("Andere Note");
-        break;
-}
-```
-
-- `switch (...)` enthält den zu prüfenden Wert; `{ ... }` umfasst die Fälle.
-- `case 1:` beginnt den Fall für den Wert `1`.
-- `break;` beendet den `switch`-Block.
-- `default:` gilt, wenn kein `case` passt.
-
-Note:
-- switch wählt anhand eines Werts einen passenden Fall. Hier wird Gut ausgegeben.
-- case beschreibt einen festen Vergleichswert, default den Fall ohne passende Zuordnung.
-- break beendet hier den switch-Block; danach geht das Programm weiter.
-- Moderne Varianten und Pattern Matching heute auslassen.
-
----
-
-## Aufgabe 10: Taschenrechner
-
-*Optionale Vertiefung*
-
-**Ziel:** Mit `switch` zwischen festen Rechenoperationen wählen.
-
-**Anforderungen:**
-
-1. Lesen Sie eine Zahl, einen Operator als Text und eine zweite Zahl ein. Verwenden Sie `double` für die Zahlen.
-2. Berechnen Sie mit `switch` das Ergebnis für `"+"`, `"-"`, `"*"` oder `"/"` und geben Sie es aus.
-3. Melden Sie im `default`-Fall einen unbekannten Operator.
-
-**Tipps:** Ein Fall beginnt mit `case "+":` und endet hier mit `break;`. Testen Sie zunächst gültige Zahlen und bei Division einen Divisor ungleich 0.
-
-Note:
-- Optional. Alle vier Operationen und einen unbekannten Operator testen. Aufgabe 13 ergänzt die Prüfung auf null.
-
----
-
-## Aufgabe 11: Noten in Text umwandeln
-
-*Optionale Vertiefung*
-
-**Ziel:** Feste Werte mit `switch` zuordnen.
-
-**Anforderungen:**
-
-1. Lesen Sie eine Schulnote als ganze Zahl ein.
-2. Ordnen Sie zu: 1 → Sehr gut; 2 → Gut; 3 → Befriedigend; 4 → Ausreichend; 5 → Mangelhaft; 6 → Ungenügend.
-3. Geben Sie für andere Zahlen `Ungültige Note` aus.
-
-**Tipps:** Beginnen Sie mit zwei `case`-Fällen. Ergänzen Sie die übrigen und `default`. Testen Sie auch `0` und `7`.
-
-Note:
-- Optional. break beendet den switch, nicht das gesamte Programm.
-
----
-
-## Aufgabe 12: Schaltjahr-Rechner
+## Aufgabe 11: Schaltjahr-Rechner
 
 *Optionale Vertiefung*
 
@@ -1335,30 +1410,14 @@ Note:
 **Tipps:** Verwenden Sie `%`, `==`, `!=`, `&&`, `||` und Klammern. Testfälle: 2000 und 2024 → ja; 1900 und 2023 → nein.
 
 Note:
-- Optional. Gregorianische Regel als Rechenübung. Teilbedingungen zuerst einzeln formulieren.
+- Optional; gregorianische Regel, Teilbedingungen zuerst
+- 2024: Viererregel; 1900: Hunderterausnahme
+- 2000: Vierhunderterausnahme; 2023: nicht durch vier teilbar
+
 
 ---
 
-## Aufgabe 13: Division durch null abfangen
-
-*Optionale Vertiefung*
-
-**Ziel:** Eine bestehende Entscheidung um einen Sonderfall erweitern.
-
-**Anforderungen:**
-
-1. Erweitern Sie den Taschenrechner aus Aufgabe 10.
-2. Prüfen Sie im Divisionsfall die zweite Zahl: Bei `0` geben Sie eine verständliche Meldung aus und führen die Division nicht aus.
-3. Andernfalls berechnen Sie das Ergebnis wie bisher.
-
-**Tipps:** Verwenden Sie `if`/`else` im passenden `case`-Block. Testen Sie `10 / 2` und `10 / 0`.
-
-Note:
-- Optional. double-Division durch null kann Infinity oder NaN ergeben. Die fachliche Regel soll dies hier verhindern.
-
----
-
-## Aufgabe 14: Login-Simulation
+## Aufgabe 12: Login-Simulation
 
 *Optionale Vertiefung*
 
@@ -1373,4 +1432,7 @@ Note:
 **Tipps:** Vergleichen Sie mit `==`. Prüfen Sie das Passwort innerhalb des passenden Namensfalls mit einer weiteren `if`/`else`-Anweisung. Testen Sie alle drei Fälle.
 
 Note:
-- Optional. Reine Ablaufübung, kein Vorbild für ein echtes Login. == berücksichtigt bei diesen Textvergleichen die Groß-/Kleinschreibung.
+- Optional; Textvergleich ==, Groß-/Kleinschreibung
+- Verschachtelung: Passwort nur bei passendem Namen prüfen
+- Drei Abläufe testen
+- Nur Simulation; echte Passwortspeicherung/-prüfung später

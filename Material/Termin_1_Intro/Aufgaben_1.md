@@ -6,8 +6,6 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 ### Aufgabe 1: Programm starten und verändern
 
-*Übungsblock 1*
-
 **Ziel:** Das vorbereitete Projekt bearbeiten und ausführen.
 
 **Anforderungen:**
@@ -22,8 +20,6 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 ### Aufgabe 2: Passende Datentypen wählen
 
-*Übungsblock 2*
-
 **Ziel:** Variablen mit passenden Typen anlegen, lesen und ändern.
 
 **Anforderungen:**
@@ -35,8 +31,6 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 **Tipps:** Nutzen Sie die Typentabelle. Für `float` ist das Suffix `F` erforderlich. Beim Ändern entfällt der Typ vor dem Namen.
 
 ### Aufgabe 3: Gesamtpreis aktualisieren
-
-*Übungsblock 2*
 
 **Ziel:** Mit Variablen rechnen und gespeicherte Werte ändern.
 
@@ -50,24 +44,33 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** Alle Schritte in einem Programmlauf. Nutzen Sie `anzahl = anzahl + 2;`. Erwartete Ausgaben: `7.5`, `7.5`, `12.5` (ggf. mit Komma).
 
-## Übungsblock 3: Eingaben, Berechnungen und Entscheidungen
+### Aufgabe 4: Werte kopieren und ändern
 
-### Aufgabe 4: Vor- und Nachname einlesen
-
-*Übungsblock 3*
-
-**Ziel:** Texte in zwei Variablen speichern und verwenden.
+**Ziel:** Werte zwischen Variablen übertragen und unabhängig ändern.
 
 **Anforderungen:**
 
-1. Fragen Sie nacheinander nach Vor- und Nachname und speichern Sie beide Eingaben in eigenen `string`-Variablen.
-2. Geben Sie beide Werte auf getrennten Zeilen aus.
+1. Legen Sie `punkte` als `int` mit dem Wert `12` an. Legen Sie `kopie` als `int` an und weisen Sie ihr den Wert von `punkte` zu.
+2. Erhöhen Sie nur `punkte` um `5`. Geben Sie beide Variablen einzeln aus.
+3. Weisen Sie `kopie` den aktuellen Wert von `punkte` zu. Geben Sie beide erneut aus.
 
-**Tipps:** Nutzen Sie `Console.ReadLine()` zum Einlesen und `Console.WriteLine(...)` zum Ausgeben.
+**Tipps:** Bei einer erneuten Zuweisung entfällt der Typ. Erwartete Ausgaben: `17`, `12`, `17`, `17`.
 
-### Aufgabe 5: Alter in Tagen berechnen
+### Aufgabe 5: Artikel auf Kartons verteilen
 
-*Übungsblock 3*
+**Ziel:** Ganzzahldivision und Restberechnung verwenden.
+
+**Anforderungen:**
+
+1. Legen Sie `artikel` mit dem Wert `23` und `proKarton` mit dem Wert `5` an, jeweils als `int`.
+2. Berechnen Sie mit `/` die Anzahl vollständig gefüllter Kartons und mit `%` die übrigen Artikel. Speichern und geben Sie beide Ergebnisse aus.
+3. Ändern Sie `artikel` auf `25`. Berechnen und geben Sie beide Ergebnisse erneut aus.
+
+**Tipps:** Zwei `int`-Werte ergeben bei `/` eine Ganzzahldivision. Erwartete Ausgaben: `4`, `3`, `5`, `0`.
+
+## Übungsblock 3: Eingaben, Berechnungen und Entscheidungen
+
+### Aufgabe 6: Alter in Tagen berechnen
 
 **Ziel:** Eine Eingabe umwandeln, rechnen und mit `if`/`else` entscheiden.
 
@@ -79,9 +82,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** Testen Sie die Grenze: 17 → 6205 Tage / minderjährig; 18 → 6570 Tage / volljährig; 20 → 7300 Tage / volljährig.
 
-### Aufgabe 6: Gerade oder ungerade?
-
-*Übungsblock 3*
+### Aufgabe 7: Gerade oder ungerade?
 
 **Ziel:** Restberechnung und Vergleich als Bedingung verwenden.
 
@@ -93,9 +94,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** `zahl % 2 == 0` prüft, ob kein Rest bleibt. Testfälle: `8` → gerade, `7` → ungerade, `0` → gerade.
 
-### Aufgabe 7: Zutritt prüfen
-
-*Übungsblock 3*
+### Aufgabe 8: Zutritt prüfen
 
 **Ziel:** Vergleiche und logische Operatoren in einer Entscheidung kombinieren.
 
@@ -109,7 +108,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 ## Optionale Vertiefung
 
-### Aufgabe 8: Währungsrechner
+### Aufgabe 9: Währungsrechner
 
 *Optionale Vertiefung*
 
@@ -123,7 +122,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** Verwenden Sie `Convert.ToDouble(...)` und z. B. `{dollar:0.00}` in einem interpolierten Text. 10 Euro ergeben 10.80 US-Dollar.
 
-### Aufgabe 9: Ticketpreis ermitteln
+### Aufgabe 10: Ticketpreis ermitteln
 
 *Optionale Vertiefung*
 
@@ -137,35 +136,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** Prüfen Sie die Altersgrenzen in aufsteigender Reihenfolge. Testen Sie `5`, `6`, `17`, `18`, `64` und `65`.
 
-### Aufgabe 10: Taschenrechner
-
-*Optionale Vertiefung*
-
-**Ziel:** Mit `switch` zwischen festen Rechenoperationen wählen.
-
-**Anforderungen:**
-
-1. Lesen Sie eine Zahl, einen Operator als Text und eine zweite Zahl ein. Verwenden Sie `double` für die Zahlen.
-2. Berechnen Sie mit `switch` das Ergebnis für `"+"`, `"-"`, `"*"` oder `"/"` und geben Sie es aus.
-3. Melden Sie im `default`-Fall einen unbekannten Operator.
-
-**Tipps:** Ein Fall beginnt mit `case "+":` und endet hier mit `break;`. Testen Sie zunächst gültige Zahlen und bei Division einen Divisor ungleich 0.
-
-### Aufgabe 11: Noten in Text umwandeln
-
-*Optionale Vertiefung*
-
-**Ziel:** Feste Werte mit `switch` zuordnen.
-
-**Anforderungen:**
-
-1. Lesen Sie eine Schulnote als ganze Zahl ein.
-2. Ordnen Sie zu: 1 → Sehr gut; 2 → Gut; 3 → Befriedigend; 4 → Ausreichend; 5 → Mangelhaft; 6 → Ungenügend.
-3. Geben Sie für andere Zahlen `Ungültige Note` aus.
-
-**Tipps:** Beginnen Sie mit zwei `case`-Fällen. Ergänzen Sie die übrigen und `default`. Testen Sie auch `0` und `7`.
-
-### Aufgabe 12: Schaltjahr-Rechner
+### Aufgabe 11: Schaltjahr-Rechner
 
 *Optionale Vertiefung*
 
@@ -179,21 +150,7 @@ Bearbeiten Sie die Aufgaben im vorbereiteten Projekt und starten Sie es über **
 
 **Tipps:** Verwenden Sie `%`, `==`, `!=`, `&&`, `||` und Klammern. Testfälle: 2000 und 2024 → ja; 1900 und 2023 → nein.
 
-### Aufgabe 13: Division durch null abfangen
-
-*Optionale Vertiefung*
-
-**Ziel:** Eine bestehende Entscheidung um einen Sonderfall erweitern.
-
-**Anforderungen:**
-
-1. Erweitern Sie den Taschenrechner aus Aufgabe 10.
-2. Prüfen Sie im Divisionsfall die zweite Zahl: Bei `0` geben Sie eine verständliche Meldung aus und führen die Division nicht aus.
-3. Andernfalls berechnen Sie das Ergebnis wie bisher.
-
-**Tipps:** Verwenden Sie `if`/`else` im passenden `case`-Block. Testen Sie `10 / 2` und `10 / 0`.
-
-### Aufgabe 14: Login-Simulation
+### Aufgabe 12: Login-Simulation
 
 *Optionale Vertiefung*
 
